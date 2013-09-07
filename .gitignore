@@ -3,6 +3,7 @@
 .*
 # except for .gitignore
 !.gitignore
+!.sencha
 
 # Ignore Play! working directory #
 db
