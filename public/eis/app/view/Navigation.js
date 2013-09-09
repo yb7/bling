@@ -12,7 +12,7 @@ Ext.define('Bling.view.Navigation', {
                 text: '理配',
                 expanded: true,
                 children: [
-                    { id: 'entering-warehouse-panels', text: '入库', leaf: true }
+                    { id: 'entering-warehouse-mgmt-grid', text: '入库', leaf: true }
                 ]
             },
             {

@@ -63,7 +63,7 @@ Ext.define("Bling.view.foundation.CompanyMgmtGrid", {
             }],
 
             columns: [
-                {text: 'ID', dataIndex: 'id'},
+                {text: 'ID', dataIndex: 'id', hidden: true},
                 {text: '简码', dataIndex: 'shortCode'},
                 {text: '名称', dataIndex: 'name'}
             ],
