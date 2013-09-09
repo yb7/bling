@@ -5,8 +5,11 @@
 # Home page                                            
 #GET     /                                           controllers.Application.index
 
-GET        /eis/foundation/companies        @controllers.eis.foundation.CompanyController.query()
-POST  /eis/foundation/companies @controllers.eis.foundation.CompanyController.create()
+GET         /eis/foundation/companies        @controllers.eis.foundation.CompanyController.query()
+POST        /eis/foundation/companies        @controllers.eis.foundation.CompanyController.create()
+PUT         /eis/foundation/companies/:id        @controllers.eis.foundation.CompanyController.update(id: Long)
+DELETE      /eis/foundation/companies/:id    @controllers.eis.foundation.CompanyController.delete(id: Long)
+
 
 # Map static resources from the /public folder to the /assets URL path                                            
-GET        /assets/*file                     controllers.Assets.at(path="/public", file)
+GET         /assets/*file        controllers.Assets.at(path="/public", file)

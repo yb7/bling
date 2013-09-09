@@ -70,7 +70,11 @@ Ext.define('Bling.controller.foundation.CompanyMgmtGrid', {
         var me = this;
         this.control({
             'company-mgmt-grid': {
-                afterrender: this.fetchCompanies
+                afterrender: this.fetchCompanies,
+                itemdblclick: this.showEditWin,
+                selectionchange: function(selModel, selections){
+                    this.getCompanyMgmtGrid().down('#deleteBtn').setDisabled(selections.length === 0);
+                }
             },
             'company-mgmt-grid textfield[name=searchField]': {
                 change: {
@@ -94,6 +98,9 @@ Ext.define('Bling.controller.foundation.CompanyMgmtGrid', {
             'company-mgmt-grid #createBtn': {
                 click: function(){this.getView('foundation.EditCompanyWin').create().show();}
             },
+            'company-mgmt-grid #deleteBtn': {
+                click: this.deleteCompany
+            },
             'edit-company-win #saveBtn': {
                 click: this.saveCompany
             },
@@ -101,7 +108,20 @@ Ext.define('Bling.controller.foundation.CompanyMgmtGrid', {
                 click: function(cmp, e, opts){ cmp.up('edit-company-win').close(); }
             }
 
+
         })
+    },
+    deleteCompany: function(){
+        var selected = this.getCompanyMgmtGrid().getSelectionModel().getSelection()[0];
+        if (selected) {
+            this.getCompanyMgmtGrid().getStore().remove(selected);
+        }
+    },
+
+    showEditWin: function(view, record, item, index, e, opts) {
+        var win = this.getView('foundation.EditCompanyWin').create();
+        win.down('form').getForm().loadRecord(record);
+        win.show();
     },
 
     saveCompany: function(cmp, e, opts) {
@@ -116,25 +136,17 @@ Ext.define('Bling.controller.foundation.CompanyMgmtGrid', {
             var company = Ext.create('Bling.model.foundation.Company', values);
             this.getCompanyMgmtGrid().getStore().insert(0, company);
             cmp.up('edit-company-win').close();
-//            company.save();
         } else {
-            JT.dao.Util.AppHelper.sendRequest(
-                'rest/wms/warehouses',
-                'PUT',
-                function(e) {
-                    Ext.MessageBox.alert("成功", "修改仓库成功！");
-                    Ext.getCmp('wmswarehouseWarehouseCrudtab').store.loadPage(1);
-                    that.close();
-                }, values
-            );
+            var selected = this.getCompanyMgmtGrid().getSelectionModel().getSelection()[0];
+            selected.beginEdit();
+            selected.set('name', values.name);
+            selected.set('shortCode', values.shortCode);
+            selected.endEdit();
+            cmp.up('edit-company-win').close();
         }
     },
 
     fetchCompanies: function(cmp, opts) {
-//        this.getCompanyMgmtGrid().callParent(arguments);
-//        this.getCompanyMgmtGrid().textField = this.down('textfield[name=searchField]');
-//        this.getCompanyMgmtGrid().statusBar = this.down('statusbar[name=searchStatusBar]');
-
         this.getCompanyMgmtGrid().getStore().load();
     },
 

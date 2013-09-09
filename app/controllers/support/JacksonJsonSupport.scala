@@ -15,7 +15,7 @@ import deser.ValueInstantiator
  * Date: 13-1-11
  * Time: 下午1:00
  */
-trait JacksonJsonSupport extends JsonSupport {
+trait JacksonJsonSupport extends JsonSupport with ExtendJsonContent {
     def toJson(obj: AnyRef): JsonStr = {
         new JsonStr(JacksonJsonSupport.objectMapper.writeValueAsString(obj))
     }

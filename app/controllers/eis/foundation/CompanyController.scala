@@ -18,7 +18,7 @@ import com.wyb7.waffle.commons.value.GenericActionResult._
 @Component
 class CompanyController @Autowired()(companyService: CompanyService) extends Controller with JacksonJsonSupport {
     def query() = Action { implicit request =>
-        Ok(toJson(Pagination.createWithAllData(companyService.query().map(CompanyDtoAssembler.toDto(_)))))
+        OkJson(Pagination.createWithAllData(companyService.query().map(CompanyDtoAssembler.toDto(_))))
     }
 
     def create() = Action(jsonParser[CompanyCreateDto]) { implicit request =>
@@ -28,10 +28,27 @@ class CompanyController @Autowired()(companyService: CompanyService) extends Con
         domain.shortCode = dto.shortCode
         companyService.createNew(domain)
         CompanyDtoAssembler.toDto(domain)
-        Ok(toJson(successResult(CompanyDtoAssembler.toDto(domain))))
+        OkJson(successResult(CompanyDtoAssembler.toDto(domain)))
+    }
+
+    def update(id: Long) = Action(jsonParser[CompanyCreateDto]) { implicit request =>
+        val dto = request.body
+        companyService.findById(id) match {
+            case Some(company) => company.name = dto.name
+                company.shortCode = dto.shortCode
+                companyService.update(company)
+                OkJson(successResult(CompanyDtoAssembler.toDto(company)))
+            case None => NotFound
+        }
+    }
+
+    def delete(id: Long) = Action { implicit request =>
+        companyService.delete(id)
+        OkJson(successResult(s"删除公司 ID[$id]"))
+
     }
 }
 
 case class CompanyDto(id: Long, shortCode: String, name: String, version: Int)
 
-case class CompanyCreateDto(shortCode: String, name: String)
+case class CompanyCreateDto(shortCode: String, name: String, version: Int)

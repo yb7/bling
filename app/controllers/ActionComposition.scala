@@ -6,7 +6,6 @@ package controllers
  * Time: 下午10:41
  */
 
-import _root_.util.HibernateUtil
 import play.api.mvc._
 import play.api.mvc.Results._
 

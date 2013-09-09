@@ -1,11 +1,14 @@
 package com.wyb7.waffle.domain.query
 
-import collection.JavaConverters._
+import scala.collection.JavaConverters._
 import com.wyb7.waffle.commons.util.JTypePredef._
-import org.hibernate.{SimpleNaturalIdLoadAccess, Criteria, Session, Query}
+import org.hibernate._
 import org.apache.commons.lang3.StringUtils
 import org.joda.time.{LocalTime, DateTime, LocalDateTime, LocalDate}
 import org.slf4j.LoggerFactory
+import java.io.Serializable
+import scala.collection
+import scala.Some
 
 /**
  * Author: Wang Yibin
@@ -153,9 +156,21 @@ object HibernateQueryBuilder {
     implicit def wrappedQuery(query: Query):WrappedHibernateQuery = new WrappedHibernateQuery(query)
     implicit def wrappedCriteria(criteria: Criteria):WrappedHibernateCriteria = new WrappedHibernateCriteria(criteria)
 
+    implicit class WrappedSession(session: Session) {
+        def loadOpt[T](entityClass: Class[_], id: Serializable): Option[T] = {
+            val result = session.load(entityClass, id)
+            if (result == null) { None } else { Some(result.asInstanceOf[T]) }
+        }
+
+        def getOpt[T](entityClass: Class[_], id: Serializable): Option[T] = {
+            val result = session.get(entityClass, id)
+            if (result == null) { None } else { Some(result.asInstanceOf[T]) }
+        }
+    }
+
     implicit class WrappedSimpleNaturalIdLoadAccess(simpleNaturalIdLoadAccess: SimpleNaturalIdLoadAccess) {
-        def loadOpt[T] = {
-            val result = simpleNaturalIdLoadAccess.load().asInstanceOf[T]
+        def loadOpt[T](naturalIdValue: AnyRef) = {
+            val result = simpleNaturalIdLoadAccess.load(naturalIdValue).asInstanceOf[T]
             if (result == null) None else Some(result)
         }
     }

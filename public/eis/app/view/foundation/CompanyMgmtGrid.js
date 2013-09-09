@@ -55,6 +55,11 @@ Ext.define("Bling.view.foundation.CompanyMgmtGrid", {
                 xtype: 'button',
                 itemId: 'createBtn',
                 text: '新建'
+            }, {
+                xtype: 'button',
+                itemId: 'deleteBtn',
+                disabled: true,
+                text: '删除'
             }],
 
             columns: [

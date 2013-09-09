@@ -13,6 +13,7 @@ import com.wyb7.waffle.domain.entity.{ScalaBigDecimalUserType, UnderscoreNamingS
 import org.springframework.transaction.annotation.{TransactionManagementConfigurer, EnableTransactionManagement}
 import org.slf4j.LoggerFactory
 import org.springframework.transaction.PlatformTransactionManager
+import org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor
 
 /**
  * User: abin
@@ -45,13 +46,6 @@ class AppServiceConfig extends TransactionManagementConfigurer {
     def transactionManager: PlatformTransactionManager = {
         new HibernateTransactionManager(sessionFactory)
     }
-
-//    @Bean
-//    def transactionTemplate: TransactionTemplate = {
-//        val t = new TransactionTemplate
-//        t.setTransactionManager(transactionManager)
-//        t
-//    }
 
     def annotationDrivenTransactionManager(): PlatformTransactionManager = transactionManager
 }

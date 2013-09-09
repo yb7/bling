@@ -10,4 +10,5 @@ trait CompanyRepository {
     def findById(id: Long): Option[Company]
     def save(company: Company): Long
     def update(company: Company): Unit
+    def delete(id: Long): Unit
 }

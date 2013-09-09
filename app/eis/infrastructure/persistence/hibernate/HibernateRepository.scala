@@ -42,12 +42,18 @@ trait Update { this: HibernateRepository =>
 }
 
 trait FindById { this: HibernateRepository =>
-    def findById(obj: Long): Option[EntityType] = {
-        getSession.bySimpleNaturalId(runtimeClass).loadOpt
+    def findById(id: Long): Option[EntityType] = {
+        getSession.getOpt(runtimeClass, id)
     }
 }
 trait FindAll { this: HibernateRepository =>
     def findAll(): List[EntityType] = {
         getSession.createCriteria(runtimeClass).listNotEmpty()
+    }
+}
+
+trait Delete { this: HibernateRepository =>
+    def delete(id: Long) {
+        getSession.delete(getSession.load(runtimeClass, id))
     }
 }

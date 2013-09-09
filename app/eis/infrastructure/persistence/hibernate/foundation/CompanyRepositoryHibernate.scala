@@ -15,7 +15,8 @@ class CompanyRepositoryHibernate extends HibernateRepository
         with CompanyRepository with Save
         with Update
         with FindAll
-        with FindById {
+        with FindById
+        with Delete {
     type EntityType = Company
 
     def runtimeClass: Class[_] = classOf[Company]

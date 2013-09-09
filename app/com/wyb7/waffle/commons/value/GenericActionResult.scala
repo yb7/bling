@@ -15,4 +15,5 @@ object GenericActionResult {
     def successResult(message:String = "", data:Any = null) = new GenericActionResult(true, message, data)
     def successResult(data:Any) = new GenericActionResult(true, "", data)
     def failureResult(message:String = "", data:Any = null) = new GenericActionResult(false, message, data)
+
 }

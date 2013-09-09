@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional
 trait CompanyService {
     def createNew(company: Company)
     def query(): List[Company]
+    def findById(id: Long): Option[Company]
+    def update(company: Company): Unit
+    def delete(id: Long): Unit
 }
 
 @Transactional
@@ -31,7 +34,20 @@ class CompanyServiceImpl extends CompanyService {
     def createNew(company: Company) {
         companyRepository.save(company)
     }
+    @Transactional(readOnly = true)
     def query(): List[Company] = {
         companyRepository.findAll()
+    }
+    @Transactional(readOnly = true)
+    def findById(id: Long): Option[Company] = {
+        companyRepository.findById(id)
+    }
+
+    def update(company: Company) {
+        companyRepository.update(company)
+    }
+
+    def delete(id: Long) {
+        companyRepository.delete(id)
     }
 }
