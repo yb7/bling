@@ -13,11 +13,11 @@ object ApplicationBuild extends Build {
   val appDependencies = Seq(
     // Add your project dependencies here,
     jdbc,
-    //anorm
     HibernateCore, MySqlConnector,
     JodaTime, JodaMoney, JodaConvert, HibernateUserType,
     CommonsLang3, CommonsIo, Poi,
-    SpringContext, SpringContextSupport, SpringBean, SpringTx, SpringORM
+    SpringContext, SpringContextSupport, SpringBean, SpringTx, SpringORM,
+    CGLib
   ) ++ Group.JavaMail ++ Group.Jackson
 
 

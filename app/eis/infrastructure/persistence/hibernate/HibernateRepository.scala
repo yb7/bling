@@ -1,8 +1,8 @@
-package eis.infrastructure.persistence.hibernate;
+package eis.infrastructure.persistence.hibernate
 
 import org.hibernate.Session
 import org.hibernate.SessionFactory
-import org.springframework.beans.factory.annotation.Required
+import org.springframework.beans.factory.annotation.{Autowired, Required}
 import com.wyb7.waffle.domain.query.HibernateQueryBuilder._
 //import scala.reflect.runtime.{universe => ru}
 import scala.reflect.ClassTag
@@ -12,13 +12,14 @@ import scala.reflect.ClassTag
  */
 abstract class HibernateRepository {
 
+
     private var sessionFactory:SessionFactory = _
 
     type EntityType
 
     def runtimeClass: Class[_]
 
-    @Required
+    @Autowired
     def setSessionFactory(sessionFactory: SessionFactory) {
         this.sessionFactory = sessionFactory
     }

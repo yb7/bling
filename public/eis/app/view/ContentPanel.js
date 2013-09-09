@@ -1,8 +1,17 @@
 Ext.define('Bling.view.ContentPanel', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.tab.Panel',
     xtype: 'contentPanel',
-    id: 'content-panel',
-    title: '&nbsp;',
+    id: 'content-panel'//,
 
-    autoScroll: true
+//    items: [{
+//        title: 'Foo',
+//        closable: true
+//    }, {
+//        title: 'Bar',
+//        tabConfig: {
+//            title: 'Custom Title',
+//            tooltip: 'A button tooltip'
+//        },
+//        closable: true
+//    }]
 });

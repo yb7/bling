@@ -1,20 +1,11 @@
 package eis.domain.model.foundation
 
-import com.wyb7.waffle.domain.operation._
-
-
-import com.wyb7.waffle.commons.util.JTypePredef._
-import collection.JavaConverters._
-import org.hibernate.criterion.Restrictions
 import com.wyb7.waffle.domain.entity.IdVersionEntity
 import org.apache.commons.lang3.builder.{EqualsBuilder, HashCodeBuilder}
 import javax.persistence._
-import util.HibernateSessionHolder
 import javax.persistence.Entity
 import javax.persistence.Table
-import javax.persistence.CascadeType
-import scala.Some
-import org.hibernate.annotations.{Fetch, NaturalId, FetchMode}
+import org.hibernate.annotations.NaturalId
 
 
 @Entity

@@ -1,6 +1,7 @@
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.ApplicationContext
+import org.springframework.context.support.ClassPathXmlApplicationContext
 import play.api._
 import util.{AppServiceConfig, HibernateUtil}
 
@@ -17,7 +18,7 @@ object Global extends GlobalSettings {
     override def onStart(app: Application) {
         super.onStart(app)
         Logger.info("Application has started")
-
+//        ctx = new ClassPathXmlApplicationContext("applicationContext.xml")
         ctx = new AnnotationConfigApplicationContext(classOf[AppServiceConfig])
     }
 

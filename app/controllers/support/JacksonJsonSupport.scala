@@ -56,6 +56,7 @@ object JacksonJsonSupport {
                 .addSerializer(classOf[Enumeration#Value], JustToString[Enumeration#Value])
                 .addValueInstantiator(classOf[BigDecimal], {x: String =>BigDecimal(x)})
         objectMapper.registerModule(simpleModule)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         objectMapper
     }
 

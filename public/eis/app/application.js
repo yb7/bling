@@ -11,10 +11,11 @@ Ext.define('Bling.Application', {
     ],
 
     controllers: [
-        // TODO: add controllers here
+        'Navigation',
+        'foundation.CompanyMgmtGrid'
     ],
 
     stores: [
-        // TODO: add stores here
+        'foundation.Companies'
     ]
 });

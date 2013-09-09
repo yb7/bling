@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <property name="log.path" value="${application.home}/logs" />
+
+    <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+    <appender name="AppLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/app/app.log</file>
+        <encoder>
+            <pattern>%date - [%level] - from %logger in %thread %n%message%n%xException%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/app/app.log-%d{yyyyMMdd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="AccessLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <Pattern>%msg%n</Pattern>
+        </encoder>
+        <file>${log.path}/access/access.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/access/access.log-%d{yyyyMMdd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%coloredLevel %logger{15} - %message%n%xException{5}</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="play" level="INFO"/>
+    <logger name="application" level="DEBUG"/>
+    <logger name="controllers" level="DEBUG"/>
+    <logger name="eis" level="DEBUG"/>
+    <logger name="util" level="DEBUG"/>
+
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="AppLog"/>
+    </root>
+    <logger name="AccessLog" level="INFO"> //additivity="false">
+        <appender-ref ref="AccessLog"/>
+    </logger>
+</configuration>

@@ -15,11 +15,11 @@ trait Secured {
 
     def Authenticated[A](parser: BodyParser[A], readOnly: Boolean = false)(f: AuthenticatedRequest[A] => Result) = {
         ExceptionAjaxWrapper {
-            InTransaction {
+//            InTransaction {
                 Action(parser) { implicit request =>
                     f(AuthenticatedRequest(null, request))
                 }
-            }
+//            }
         }
     }
     case class SecuredUser(id: Long, fullname: String)
@@ -30,18 +30,18 @@ trait Secured {
         Authenticated(parse.anyContent)(f)
     }
 
-    def InTransaction[A](action: Action[A]): Action[A] = {
-        Action(action.parser) { request =>
-            try {
-                HibernateUtil.currentSession.beginTransaction()
-                val result = action(request)
-                HibernateUtil.currentSession.getTransaction.commit()
-                result
-            } catch {
-                case ex: Throwable => HibernateUtil.currentSession.getTransaction.rollback(); throw ex
-            }
-        }
-    }
+//    def InTransaction[A](action: Action[A]): Action[A] = {
+//        Action(action.parser) { request =>
+//            try {
+//                HibernateUtil.currentSession.beginTransaction()
+//                val result = action(request)
+//                HibernateUtil.currentSession.getTransaction.commit()
+//                result
+//            } catch {
+//                case ex: Throwable => HibernateUtil.currentSession.getTransaction.rollback(); throw ex
+//            }
+//        }
+//    }
 
     def ExceptionAjaxWrapper[A](action: Action[A]): Action[A] = {
         Action(action.parser) { request =>

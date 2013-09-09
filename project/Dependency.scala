@@ -30,7 +30,7 @@ object Dependency {
 
     val MySqlConnector = "mysql" % "mysql-connector-java" % "5.1.25"
 
-//    val CGLib = "cglib" % "cglib" % "2.2.2"
+    val CGLib = "cglib" % "cglib" % "2.2.2"
 
     val Spec2 = "org.specs2" %% "specs2" % "1.13" % "test"
 

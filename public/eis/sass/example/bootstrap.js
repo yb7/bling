@@ -16,6 +16,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.BoxReorderer": [],
   "ExtThemeNeptune.menu.Menu": [],
   "ExtThemeNeptune.container.ButtonGroup": [],
+  "Bling.model.foundation.Company": [],
   "Ext.ux.grid.filter.Filter": [],
   "Ext.ux.GroupTabRenderer": [],
   "Ext.ux.grid.TransformGrid": [],
@@ -42,6 +43,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.grid.filter.StringFilter": [],
   "Ext.ux.statusbar.ValidationStatus": [],
   "ExtThemeNeptune.grid.column.RowNumberer": [],
+  "Bling.store.foundation.Companies": [],
   "Ext.ux.layout.Center": [],
   "Ext.ux.PreviewPlugin": [],
   "Ext.ux.DataView.Animated": [],
@@ -49,6 +51,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Bling.view.ContentPanel": [],
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [],
+  "Bling.view.foundation.CompanyMgmtGrid": [],
   "Ext.ux.ProgressBarPager": [],
   "Ext.ux.CellDragDrop": [],
   "Ext.ux.statusbar.StatusBar": [
@@ -59,6 +62,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.TabReorderer": [],
   "Ext.ux.grid.filter.NumericFilter": [],
   "ExtThemeNeptune.layout.component.Dock": [],
+  "Bling.controller.foundation.CompanyMgmtGrid": [],
   "ExtThemeNeptune.panel.Table": [],
   "Ext.ux.grid.menu.RangeMenu": [],
   "Ext.ux.event.Recorder": [],
@@ -68,6 +72,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ExtThemeNeptune.panel.Tool": [],
   "Ext.ux.ajax.SimManager": [],
   "Ext.ux.grid.filter.BooleanFilter": [],
+  "Bling.view.foundation.EditCompanyWin": [],
   "Ext.ux.ToolbarDroppable": [],
   "Ext.ux.event.Maker": [],
   "Ext.ux.TabScrollerMenu": [],
@@ -94,6 +99,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.grid.FiltersFeature": [],
   "ExtThemeNeptune.picker.Month": [],
   "ExtThemeNeptune.grid.RowEditor": [],
+  "Bling.controller.Navigation": [],
   "ExtThemeNeptune.Component": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "Ext.data.PagingMemoryProxy"
@@ -103,6 +109,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.BoxReorderer": [],
   "ExtThemeNeptune.menu.Menu": [],
   "ExtThemeNeptune.container.ButtonGroup": [],
+  "Bling.model.foundation.Company": [],
   "Ext.ux.grid.filter.Filter": [],
   "Ext.ux.GroupTabRenderer": [
     "plugin.grouptabrenderer"
@@ -144,6 +151,7 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Ext.ux.statusbar.ValidationStatus": [],
   "ExtThemeNeptune.grid.column.RowNumberer": [],
+  "Bling.store.foundation.Companies": [],
   "Ext.ux.layout.Center": [
     "layout.ux.center"
   ],
@@ -158,6 +166,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [
     "widget.eventrecordermanager"
+  ],
+  "Bling.view.foundation.CompanyMgmtGrid": [
+    "widget.company-mgmt-grid"
   ],
   "Ext.ux.ProgressBarPager": [],
   "Ext.ux.CellDragDrop": [
@@ -175,6 +186,7 @@ Ext.ClassManager.addNameAliasMappings({
     "gridfilter.numeric"
   ],
   "ExtThemeNeptune.layout.component.Dock": [],
+  "Bling.controller.foundation.CompanyMgmtGrid": [],
   "ExtThemeNeptune.panel.Table": [],
   "Ext.ux.grid.menu.RangeMenu": [],
   "Ext.ux.event.Recorder": [],
@@ -187,6 +199,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.ajax.SimManager": [],
   "Ext.ux.grid.filter.BooleanFilter": [
     "gridfilter.boolean"
+  ],
+  "Bling.view.foundation.EditCompanyWin": [
+    "widget.edit-company-win"
   ],
   "Ext.ux.ToolbarDroppable": [],
   "Ext.ux.event.Maker": [],
@@ -237,6 +252,7 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ExtThemeNeptune.picker.Month": [],
   "ExtThemeNeptune.grid.RowEditor": [],
+  "Bling.controller.Navigation": [],
   "ExtThemeNeptune.Component": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "proxy.pagingmemory"
