@@ -31,6 +31,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.event.Driver": [],
   "Ext.ux.ajax.XmlSimlet": [],
   "Ext.ux.dd.PanelFieldDragZone": [],
+  "Bling.view.share.UploadFileWin": [],
   "Ext.ux.DataView.DragSelector": [],
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "ExtThemeNeptune.tab.Tab": [],
@@ -61,6 +62,7 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.ux.ajax.Simlet": [],
   "Ext.ux.SlidingPager": [],
+  "Bling.controller.share.UploadFileWin": [],
   "Ext.ux.TabReorderer": [],
   "Ext.ux.grid.filter.NumericFilter": [],
   "ExtThemeNeptune.layout.component.Dock": [],
@@ -71,6 +73,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.event.Recorder": [],
   "Ext.ux.RowExpander": [],
   "Bling.view.wms.ArticleSearchTabWin": [],
+  "Bling.controller.wms.EnteringWarehouseCreator": [],
   "Ext.ux.event.Player": [],
   "Bling.view.Main": [],
   "Bling.view.wms.ArticleSearchForm": [],
@@ -144,6 +147,9 @@ Ext.ClassManager.addNameAliasMappings({
     "simlet.xml"
   ],
   "Ext.ux.dd.PanelFieldDragZone": [],
+  "Bling.view.share.UploadFileWin": [
+    "widget.upload-file-win"
+  ],
   "Ext.ux.DataView.DragSelector": [],
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "ExtThemeNeptune.tab.Tab": [],
@@ -195,6 +201,7 @@ Ext.ClassManager.addNameAliasMappings({
     "simlet.basic"
   ],
   "Ext.ux.SlidingPager": [],
+  "Bling.controller.share.UploadFileWin": [],
   "Ext.ux.TabReorderer": [],
   "Ext.ux.grid.filter.NumericFilter": [
     "gridfilter.numeric"
@@ -209,6 +216,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.event.Recorder": [],
   "Ext.ux.RowExpander": [],
   "Bling.view.wms.ArticleSearchTabWin": [],
+  "Bling.controller.wms.EnteringWarehouseCreator": [],
   "Ext.ux.event.Player": [],
   "Bling.view.Main": [
     "widget.app-main"

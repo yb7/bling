@@ -1,4 +1,4 @@
-package eis.domain.model.warehouse
+package eis.domain.model.wms
 
 /**
  * User: abin

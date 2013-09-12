@@ -1,8 +1,10 @@
 package eis.domain.model.article
 
-import javax.persistence.{ManyToOne, FetchType, Table, Entity}
+import javax.persistence._
 import com.wyb7.waffle.domain.entity.IdVersionEntity
 import eis.domain.model.foundation.Company
+import eis.domain.model.article.ArticleCategory
+import eis.domain.model.wms.ReceivingOrder
 
 /**
  * User: abin
@@ -23,8 +25,8 @@ class Article extends IdVersionEntity {
     var vendorArticleName: String = _
     var vendorArticleNumber: String = _
     var name: String = _
-    @ManyToOne(fetch=FetchType.LAZY, optional = false)
-    var category: ArticleCategory = _
+//    @ManyToOne(fetch=FetchType.LAZY, optional = false) ArticleCategory
+    var category: String = _
     var style: String = _
     var lotNumber: String = _
     var styleNumber: String  = _
@@ -60,5 +62,11 @@ class Article extends IdVersionEntity {
     var procurementSettlementPrice2: BigDecimal = 0
     var procurementSettlementPrice3: BigDecimal = 0
     var retailPrice: BigDecimal = 0
+
+    var settlementMode: String = _
+    var eCommerceNumber: String = _
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    var receivingOrder: ReceivingOrder = _
 
 }

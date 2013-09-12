@@ -8,6 +8,7 @@ package eis.domain.model.foundation
 trait CompanyRepository {
     def findAll(): List[Company]
     def findById(id: Long): Option[Company]
+    def findByName(name: String): Option[Company]
     def save(company: Company): Long
     def update(company: Company): Unit
     def delete(id: Long): Unit

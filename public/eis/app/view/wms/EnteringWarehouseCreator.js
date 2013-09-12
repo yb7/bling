@@ -2,6 +2,8 @@ Ext.define('Bling.view.wms.EnteringWarehouseCreator', {
     extend: 'Ext.form.Panel',
     xtype: 'entering-warehouse-creator',
 
+    requires: ['Ext.form.field.File'],
+
     bodyPadding: 10,
     title: '入库新增',
 
@@ -17,8 +19,6 @@ Ext.define('Bling.view.wms.EnteringWarehouseCreator', {
                 },
                 {
                     xtype: 'gridpanel',
-                    title: '货品',
-                    border: 1,
                     autoScroll: true,
                     scroll: true,
                     columns: [
@@ -66,22 +66,28 @@ Ext.define('Bling.view.wms.EnteringWarehouseCreator', {
                         { text: '总采购成本' },
                         { text: '结算模式' }
                     ],
-                    tbar: ['->', {
-                            xtype: 'button',
-                            text: 'Excel模板下载'
-                        },
-                        {
-                            xtype: 'button',
-                            text: '从Excel导入'
-                        },
-                        {
-                            xtype: 'button',
-                            text: '删除'
-                        }, {
-                            text: '执行入库',
-                            itemId: 'executeBtn'
-                        }
-                    ]
+                    dockedItems: [{
+                        xtype: 'toolbar',
+                        dock: 'top',
+                        ui:'footer',
+                        items: ['->', {
+                                xtype: 'button',
+                                text: 'Excel模板下载'
+                            },
+                            {
+                                xtype: 'button',
+                                text: '从Excel导入',
+                                itemId: 'uploadFileBtn'
+                            },
+                            {
+                                xtype: 'button',
+                                text: '删除'
+                            }, {
+                                text: '执行入库',
+                                itemId: 'executeBtn'
+                            }
+                        ]
+                    }]
                 }
             ]
         });

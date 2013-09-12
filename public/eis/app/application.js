@@ -14,6 +14,7 @@ Ext.define('Bling.Application', {
         'Navigation',
         'foundation.CompanyMgmtGrid',
         'wms.EnteringWarehouseMgmtGrid',
+        'wms.EnteringWarehouseCreator',
         'wms.RegionalAllocation',
         'wms.RegionalAllocationCreator'
     ],
