@@ -1,6 +1,6 @@
 Ext.define('Bling.view.ContentPanel', {
     extend: 'Ext.tab.Panel',
-    xtype: 'contentPanel',
+    xtype: 'content-panel',
     id: 'content-panel'//,
 
 //    items: [{

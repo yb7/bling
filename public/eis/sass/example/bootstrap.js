@@ -22,6 +22,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.grid.TransformGrid": [],
   "Ext.ux.ajax.DataSimlet": [],
   "Ext.ux.FieldReplicator": [],
+  "Bling.view.wms.RegionalAllocationGrid": [],
   "Ext.ux.grid.filter.ListFilter": [],
   "ExtThemeNeptune.panel.Panel": [],
   "ExtThemeNeptune.toolbar.Paging": [],
@@ -41,6 +42,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.DataView.LabelEditor": [],
   "Ext.ux.GroupTabPanel": [],
   "Ext.ux.grid.filter.StringFilter": [],
+  "Bling.controller.wms.RegionalAllocation": [],
   "Ext.ux.statusbar.ValidationStatus": [],
   "ExtThemeNeptune.grid.column.RowNumberer": [],
   "Bling.store.foundation.Companies": [],
@@ -62,15 +64,20 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.TabReorderer": [],
   "Ext.ux.grid.filter.NumericFilter": [],
   "ExtThemeNeptune.layout.component.Dock": [],
+  "Bling.view.wms.EnteringWarehouseMgmtGrid": [],
   "Bling.controller.foundation.CompanyMgmtGrid": [],
   "ExtThemeNeptune.panel.Table": [],
   "Ext.ux.grid.menu.RangeMenu": [],
   "Ext.ux.event.Recorder": [],
   "Ext.ux.RowExpander": [],
+  "Bling.view.wms.ArticleSearchTabWin": [],
   "Ext.ux.event.Player": [],
   "Bling.view.Main": [],
+  "Bling.view.wms.ArticleSearchForm": [],
   "ExtThemeNeptune.panel.Tool": [],
   "Ext.ux.ajax.SimManager": [],
+  "Bling.controller.wms.RegionalAllocationCreator": [],
+  "Bling.view.wms.RegionalAllocationCreator": [],
   "Ext.ux.grid.filter.BooleanFilter": [],
   "Bling.view.foundation.EditCompanyWin": [],
   "Ext.ux.ToolbarDroppable": [],
@@ -82,12 +89,15 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.DataView.Draggable": [],
   "Ext.ux.TabCloseMenu": [],
   "Ext.ux.form.SearchField": [],
+  "Bling.view.wms.TallyArticleGrid": [],
+  "Bling.view.wms.EnteringWarehouseCreator": [],
   "Ext.ux.dd.CellFieldDropZone": [],
   "Ext.ux.LiveSearchGridPanel": [],
   "Bling.view.Viewport": [],
   "Ext.ux.grid.filter.DateFilter": [],
   "Ext.ux.DataTip": [],
   "Ext.ux.grid.filter.DateTimeFilter": [],
+  "Bling.controller.wms.EnteringWarehouseMgmtGrid": [],
   "Ext.ux.form.ItemSelector": [
     "Ext.ux.ItemSelector"
   ],
@@ -117,6 +127,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.grid.TransformGrid": [],
   "Ext.ux.ajax.DataSimlet": [],
   "Ext.ux.FieldReplicator": [],
+  "Bling.view.wms.RegionalAllocationGrid": [
+    "widget.regional-allocation-grid"
+  ],
   "Ext.ux.grid.filter.ListFilter": [
     "gridfilter.list"
   ],
@@ -149,6 +162,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.grid.filter.StringFilter": [
     "gridfilter.string"
   ],
+  "Bling.controller.wms.RegionalAllocation": [],
   "Ext.ux.statusbar.ValidationStatus": [],
   "ExtThemeNeptune.grid.column.RowNumberer": [],
   "Bling.store.foundation.Companies": [],
@@ -161,7 +175,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.DataView.Animated": [],
   "ExtThemeNeptune.resizer.Splitter": [],
   "Bling.view.ContentPanel": [
-    "widget.contentPanel"
+    "widget.content-panel"
   ],
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [
@@ -186,17 +200,28 @@ Ext.ClassManager.addNameAliasMappings({
     "gridfilter.numeric"
   ],
   "ExtThemeNeptune.layout.component.Dock": [],
+  "Bling.view.wms.EnteringWarehouseMgmtGrid": [
+    "widget.entering-warehouse-mgmt-grid"
+  ],
   "Bling.controller.foundation.CompanyMgmtGrid": [],
   "ExtThemeNeptune.panel.Table": [],
   "Ext.ux.grid.menu.RangeMenu": [],
   "Ext.ux.event.Recorder": [],
   "Ext.ux.RowExpander": [],
+  "Bling.view.wms.ArticleSearchTabWin": [],
   "Ext.ux.event.Player": [],
   "Bling.view.Main": [
     "widget.app-main"
   ],
+  "Bling.view.wms.ArticleSearchForm": [
+    "widget.wms-article-search-form"
+  ],
   "ExtThemeNeptune.panel.Tool": [],
   "Ext.ux.ajax.SimManager": [],
+  "Bling.controller.wms.RegionalAllocationCreator": [],
+  "Bling.view.wms.RegionalAllocationCreator": [
+    "widget.regional-allocation-creator"
+  ],
   "Ext.ux.grid.filter.BooleanFilter": [
     "gridfilter.boolean"
   ],
@@ -220,6 +245,12 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.form.SearchField": [
     "widget.searchfield"
   ],
+  "Bling.view.wms.TallyArticleGrid": [
+    "widget.tally-article-grid"
+  ],
+  "Bling.view.wms.EnteringWarehouseCreator": [
+    "widget.entering-warehouse-creator"
+  ],
   "Ext.ux.dd.CellFieldDropZone": [],
   "Ext.ux.LiveSearchGridPanel": [],
   "Bling.view.Viewport": [],
@@ -232,6 +263,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.grid.filter.DateTimeFilter": [
     "gridfilter.datetime"
   ],
+  "Bling.controller.wms.EnteringWarehouseMgmtGrid": [],
   "Ext.ux.form.ItemSelector": [
     "widget.itemselector",
     "widget.itemselectorfield"

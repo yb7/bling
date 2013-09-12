@@ -1,20 +1,20 @@
 Ext.define('Bling.controller.Navigation', {
     extend: 'Ext.app.Controller',
     requires: ['Bling.view.Navigation'],
-    views: ['foundation.CompanyMgmtGrid', 'wms.EnteringWarehouseMgmtGrid'],
+    views: ['foundation.CompanyMgmtGrid', 'wms.EnteringWarehouseMgmtGrid', 'wms.RegionalAllocationGrid'],
 
     refs: [
         {
-            ref: 'viewport',
-            selector: 'viewport'
+            selector: 'viewport',
+            ref: 'viewport'
         },
         {
-            ref: 'navigation',
-            selector: 'navigation'
+            selector: 'navigation',
+            ref: 'navigation'
         },
         {
-            ref: 'contentPanel',
-            selector: 'contentPanel'
+            selector: 'content-panel',
+            ref: 'contentPanel'
         }
     ],
 

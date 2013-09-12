@@ -12,7 +12,10 @@ Ext.define('Bling.Application', {
 
     controllers: [
         'Navigation',
-        'foundation.CompanyMgmtGrid'
+        'foundation.CompanyMgmtGrid',
+        'wms.EnteringWarehouseMgmtGrid',
+        'wms.RegionalAllocation',
+        'wms.RegionalAllocationCreator'
     ],
 
     stores: [
