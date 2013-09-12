@@ -39,8 +39,12 @@ class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrde
         OkJson(successResult(new ReceivingOrderHeadDto(order)))
     }
     def articles(id: Long) = Action {
-        OkJson
+        OkJson(successResult(receivingOrderService.findById(id).get.listArticles.map(new ArticleDto(_))))
     }
+
+//    def list() = Action {
+//        OkJson()
+//    }
 }
 
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)

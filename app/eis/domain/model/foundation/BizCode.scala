@@ -11,7 +11,7 @@ import org.hibernate.annotations.NaturalId
  */
 @Entity
 @Table(name = "fnd_biz_code")
-class BizCode protected[domain](tPrefix: String, tNextValue: Long = 1) extends IdVersionEntity {
+class BizCode(tPrefix: String, tNextValue: Long = 1) extends IdVersionEntity {
     protected def this() = this("")
 
     @NaturalId

@@ -3,7 +3,6 @@ package eis.domain.model.article
 import javax.persistence._
 import com.wyb7.waffle.domain.entity.IdVersionEntity
 import eis.domain.model.foundation.Company
-import eis.domain.model.article.ArticleCategory
 import eis.domain.model.wms.ReceivingOrder
 
 /**

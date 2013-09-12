@@ -1,7 +1,7 @@
 package eis.application
 
-import eis.domain.model.warehouse.Warehouse
 import eis.domain.model.article.Article
+import eis.domain.model.wms.Warehouse
 
 /**
  * User: abin
