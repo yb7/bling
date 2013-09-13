@@ -13,10 +13,14 @@ import com.wyb7.waffle.commons.exception.InvalidFormatException
  */
 
 object HSSFCellHelper {
+//    implicit def flattenOptionHssfCell(opt: Option[HSSFCell]): HSSFCell = opt.getOrElse(null)
+
+    implicit def optionHssfCellToStr(opt: Option[HSSFCell]): String = if (opt.isEmpty) null else opt.get
     implicit def hssfCellToStr(cell: HSSFCell): String = if (cell != null) trim(cell.toString) else null
 
     implicit def hssfCellToLong(cell:HSSFCell): Long = hssfCellToBigDecimal(cell).longValue()
 
+    implicit def optionHssfCellToInt(opt: Option[HSSFCell]): Int = if (opt.isEmpty) 0 else opt.get
     implicit def hssfCellToInt(cell:HSSFCell): Int = hssfCellToBigDecimal(cell).intValue()
 
     implicit def hssfCellToDate(cell: HSSFCell): java.util.Date = {
@@ -56,6 +60,8 @@ object HSSFCellHelper {
             null
         }
     }
+
+    implicit def optionHssfCellToBigDecimal(opt: Option[HSSFCell]): BigDecimal = if (opt.isEmpty) BigDecimal("0") else opt.get
     implicit def hssfCellToBigDecimal(cell: HSSFCell): BigDecimal = {
         import org.apache.poi.ss.usermodel.Cell._
         if (cell == null) {

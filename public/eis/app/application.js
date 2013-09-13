@@ -12,14 +12,17 @@ Ext.define('Bling.Application', {
 
     controllers: [
         'Navigation',
+        'shared.UploadFileWin',
         'foundation.CompanyMgmtGrid',
-        'wms.EnteringWarehouseMgmtGrid',
-        'wms.EnteringWarehouseCreator',
+        'wms.ReceivingOrderMgmtGrid',
+        'wms.ReceivingOrderEditor',
         'wms.RegionalAllocation',
         'wms.RegionalAllocationCreator'
     ],
 
     stores: [
-        'foundation.Companies'
+        'foundation.Companies',
+        'wms.ReceivingOrders'
+
     ]
 });

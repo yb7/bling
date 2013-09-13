@@ -1,0 +1,58 @@
+Ext.define('Bling.model.foundation.Article', {
+    extend: 'Ext.data.Model',
+    fields: [
+        {name: 'id', type: 'int', convert: null},
+        {name: 'version', type: 'int'},
+        {name: 'shortCode'},
+        {name: 'name'},
+        {name: 'code', type: 'string'},
+        {name: 'vendor1Id', type: 'int'},
+        {name: 'vendor1Name', type: 'string'},
+        {name: 'vendor2Id', type: 'int'},
+        {name: 'vendor2Name', type: 'string'},
+        {name: 'vendor3Id', type: 'int'},
+        {name: 'vendor3Name', type: 'string'},
+        {name: 'vendorArticleName', type: 'string'},
+        {name: 'vendorArticleNumber', type: 'string'},
+        {name: 'name', type: 'string'},
+        {name: 'category', type: 'string'},
+        {name: 'style', type: 'string'},
+        {name: 'lotNumber', type: 'string'},
+        {name: 'styleNumber', type: 'string '},
+        // 手寸
+        {name: 'handInch', type: 'string'},
+        {name: 'metalName', type: 'string'},
+        {name: 'metalPurity', type: 'string '},
+        {name: 'weight', type: 'float'},
+        {name: 'certificateWeight', type: 'float'},
+        {name: 'tagName', type: 'string'},
+        {name: 'pricingMethod', type: 'string'},
+        {name: 'certificateCode', type: 'string'},
+        {name: 'goldWeight', type: 'float'},
+        {name: 'goldPrice', type: 'float'},
+        {name: 'remark', type: 'string'},
+        // 镶口
+        {name: 'rabbet', type: 'string'},
+        // 宝石名称
+        {name: 'gemName', type: 'string'},
+        {name: 'gemCode', type: 'string '},
+        {name: 'gemColor', type: 'string'},
+        {name: 'gemPurity', type: 'string'},
+        {name: 'gemCut', type: 'string '},
+        {name: 'gemCount', type: 'Int'},
+        {name: 'gemWeight', type: 'float'},
+        {name: 'gemRemark', type: 'string'},
+        {name: 'sideStoneName', type: 'string'},
+        {name: 'sideStoneCount', type: 'Int'},
+        {name: 'sideStoneWeight', type: 'float'},
+        {name: 'sideStoneCode', type: 'string'},
+
+        {name: 'procurementSettlementPrice1', type: 'float'},
+        {name: 'procurementSettlementPrice2', type: 'float'},
+        {name: 'procurementSettlementPrice3', type: 'float'},
+        {name: 'retailPrice', type: 'float'},
+
+        {name: 'settlementMode', type: 'string'},
+        {name: 'eCommerceNumber', type: 'string'}
+    ]
+});

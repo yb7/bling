@@ -61,6 +61,7 @@ Ext.define("Bling.view.foundation.CompanyMgmtGrid", {
                 disabled: true,
                 text: '删除'
             }],
+            forceFit: true,
 
             columns: [
                 {text: 'ID', dataIndex: 'id', hidden: true},

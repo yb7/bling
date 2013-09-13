@@ -5,11 +5,17 @@
 # Home page                                            
 #GET     /                                           controllers.Application.index
 
-GET         /eis/foundation/companies        @controllers.eis.foundation.CompanyController.query()
-POST        /eis/foundation/companies        @controllers.eis.foundation.CompanyController.create()
-PUT         /eis/foundation/companies/:id        @controllers.eis.foundation.CompanyController.update(id: Long)
-DELETE      /eis/foundation/companies/:id    @controllers.eis.foundation.CompanyController.delete(id: Long)
+GET           /eis/foundation/companies        @controllers.eis.foundation.CompanyController.query()
+POST          /eis/foundation/companies        @controllers.eis.foundation.CompanyController.create()
+PUT           /eis/foundation/companies/:id        @controllers.eis.foundation.CompanyController.update(id: Long)
+DELETE        /eis/foundation/companies/:id        @controllers.eis.foundation.CompanyController.delete(id: Long)
+
+GET           /eis/wms/receiving-orders        @controllers.eis.wms.ReceivingOrderController.findAll()
+POST          /eis/wms/receiving-orders        @controllers.eis.wms.ReceivingOrderController.create()
+POST          /eis/wms/receiving-orders/:id/articles.xls        @controllers.eis.wms.ReceivingOrderController.importXls(id: Long)
+GET           /eis/wms/receiving-orders/:id/articles        @controllers.eis.wms.ReceivingOrderController.articles(id: Long)
+
 
 
 # Map static resources from the /public folder to the /assets URL path                                            
-GET         /assets/*file        controllers.Assets.at(path="/public", file)
+GET           /assets/*file        controllers.Assets.at(path="/public", file)

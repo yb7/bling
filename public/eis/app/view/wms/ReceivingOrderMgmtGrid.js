@@ -1,7 +1,7 @@
-Ext.define("Bling.view.wms.EnteringWarehouseMgmtGrid", {
+Ext.define("Bling.view.wms.ReceivingOrderMgmtGrid", {
     extend: 'Ext.panel.Panel',
     title: '入库单管理',
-    xtype: 'entering-warehouse-mgmt-grid',
+    xtype: 'receiving-order-mgmt-grid',
     requires: [
         'Ext.toolbar.TextItem',
         'Ext.form.field.Checkbox',
@@ -17,12 +17,11 @@ Ext.define("Bling.view.wms.EnteringWarehouseMgmtGrid", {
         var me = this;
         var grid = {
             xtype: 'grid',
+            store: 'wms.ReceivingOrders',
             columns: [
                 {text: 'ID', dataIndex: 'id', hidden: true},
-                {text: '入库单号', dataIndex: 'recCode'},
-                {text: '供应商', dataIndex: 'vendorName'},
-                {text: '货品数量', dataIndex: 'articleCount'},
-                {text: '货品数量', dataIndex: 'articleCount'}
+                {text: '入库单号', dataIndex: 'bizCode'},
+                {text: '入库时间', dataIndex: 'receivingTime'}
             ],
             flex: 1
         };

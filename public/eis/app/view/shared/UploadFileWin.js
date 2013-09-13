@@ -1,4 +1,4 @@
-Ext.define('Bling.view.share.UploadFileWin', {
+Ext.define('Bling.view.shared.UploadFileWin', {
     extend: 'Ext.window.Window',
     requires: ['Ext.form.field.Field'],
     xtype: 'upload-file-win',

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component
 import play.api.mvc.{Controller, Action}
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.commons.lang3.StringUtils
-import com.wyb7.waffle.commons.value.GenericActionResult
+import com.wyb7.waffle.commons.value.{Pagination, GenericActionResult}
 import org.apache.commons.io.FileUtils
 import eis.domain.model.wms.ReceivingOrder
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility
 import com.wyb7.waffle.commons.value.GenericActionResult._
 import eis.application.wms.ReceivingOrderService
+import org.slf4j.LoggerFactory
 
 /**
  * User: abin
@@ -22,15 +23,18 @@ import eis.application.wms.ReceivingOrderService
 @Component
 class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrderService)
         extends Controller with JacksonJsonSupport {
+    private val logger = LoggerFactory.getLogger(this.getClass)
+
     def importXls(id: Long) = Action(parse.multipartFormData) { implicit request =>
         val file = request.body.file("file").get
         val workbook = new HSSFWorkbook(FileUtils.openInputStream(file.ref.file))
+        logger.debug(s"import articles from ${file.filename}")
         val order = receivingOrderService.findById(id).get
         val errorMessages = receivingOrderService.importByXls(order, workbook)
-        val result = if (errorMessages.isEmpty) {
-            successResult("成功")
+        val result = if (errorMessages.hasError) {
+            failureResult(errorMessages.messages.mkString("<br/>"))
         } else {
-            failureResult(errorMessages.mkString("<br/>"))
+            successResult("成功")
         }
         OkJson(result)
     }
@@ -42,9 +46,11 @@ class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrde
         OkJson(successResult(receivingOrderService.findById(id).get.listArticles.map(new ArticleDto(_))))
     }
 
-//    def list() = Action {
-//        OkJson()
-//    }
+    def findAll() = Action {
+        OkJson(Pagination.createWithAllData(
+            receivingOrderService.findAll.map(new ReceivingOrderHeadDto(_))
+        ))
+    }
 }
 
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)

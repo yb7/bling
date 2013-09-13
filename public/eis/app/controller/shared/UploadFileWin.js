@@ -1,4 +1,4 @@
-Ext.define('Bling.controller.share.UploadFileWin', {
+Ext.define('Bling.controller.shared.UploadFileWin', {
     extend: 'Ext.app.Controller',
 
 
@@ -13,8 +13,9 @@ Ext.define('Bling.controller.share.UploadFileWin', {
 
     doUpload: function(cmp, e, opts){
         var me = this;
-        var form = cmp.up('form').getForm();
-        var filepath = form.down('[name=file]').getValue();
+        var formDom = cmp.up('form');
+        var form = formDom.getForm();
+        var filepath = formDom.down('[name=file]').getValue();
         if (filepath.indexOf(".xls", filepath.length - 4) === -1) {
             Ext.MessageBox.alert('提醒', '请上传XLS格式文件');
             return;

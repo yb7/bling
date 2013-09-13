@@ -11,7 +11,18 @@ import com.wyb7.waffle.commons.util.Logger
  * Date: 11-9-15
  * Time: 下午5:22
  */
+class ErrorMessage {
+    private var _messages = List.empty[String]
+    def addMessage(msg: String) {
+        _messages :+= msg
+    }
+    def messages = _messages
+    def hasError = !_messages.isEmpty
+}
 
+object ErrorMessage {
+    def NoError = new ErrorMessage
+}
 class ReadXlsToMap(sheet: HSSFSheet, columns: Set[String]) {
     private val logger = Logger(classOf[ReadXlsToMap])
     
@@ -21,26 +32,37 @@ class ReadXlsToMap(sheet: HSSFSheet, columns: Set[String]) {
     private var currentRow: HSSFRow = null
     var headRow: HSSFRow = null
 
-    def read[T](rowMapper: RowMapper[T]): List[T] = {
+    def read[T](rowMapper: RowMapper[T]): Either[ErrorMessage, List[T]] = {
+        implicit val errorMessage = new ErrorMessage
+
         logger.debug("has %d rows in sheet %s".format(sheet.getPhysicalNumberOfRows, sheet.getSheetName))
         if (isEmpty) {
             logger.debug("sheet is empty")
-            return List.empty[T]
+            return Right(List.empty[T])
         }
         readHead
         verifyHead
         val list = for (i: Int <- (HeadRowNum + 1) to sheet.getLastRowNum) yield {
             currentRow = sheet.getRow(i)
             val values = parseEachRowToMap()
-            rowMapper.map(values)
+            try {
+                rowMapper.map(values, errorMessage, i)
+            } catch {
+                case e: Throwable => logger.error("Error in rowMapper.map", e)
+                    errorMessage.addMessage(e.toString)
+                    null.asInstanceOf[T]
+            }
         }
-
-        return list.toList
+        if (errorMessage.hasError) {
+            Left(errorMessage)
+        } else {
+            Right(list.toList)
+        }
     }
     def read(rch: RowCallbackHandler) {
         read(new RowMapper[Unit] {
-            def map(values: Map[String, HSSFCell]) {
-                rch.processRow(values)
+            def map(values: Map[String, HSSFCell], errorMessage: ErrorMessage, rowCount: Int) {
+                rch.processRow(values, errorMessage, rowCount)
                 return
             }
         })
@@ -55,10 +77,10 @@ class ReadXlsToMap(sheet: HSSFSheet, columns: Set[String]) {
         logger.debug("%d columns in head".format(headMap.size))
     }
 
-    private def verifyHead {
+    private def verifyHead(implicit errorMessage: ErrorMessage) {
         val missingColumns = columns -- headMap.keySet
         if (!missingColumns.isEmpty) {
-            throw new BizRuntimeException("列 " + missingColumns.mkString("、")  + " 无法找到")
+            errorMessage.addMessage("列 " + missingColumns.mkString("、")  + " 无法找到")
         }
     }
 
@@ -70,9 +92,9 @@ class ReadXlsToMap(sheet: HSSFSheet, columns: Set[String]) {
     }
 }
 trait RowMapper[T] {
-    def map(values: Map[String, HSSFCell]): T
+    def map(values: Map[String, HSSFCell], errorMessage: ErrorMessage, rowCount: Int): T
 }
 
 trait RowCallbackHandler {
-    def processRow(cells: Map[String, HSSFCell]): Unit
+    def processRow(cells: Map[String, HSSFCell], errorMessage: ErrorMessage, rowCount: Int): Unit
 }

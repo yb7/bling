@@ -5,6 +5,8 @@ import eis.domain.model.wms.{ReceivingOrderRepository, ReceivingOrder}
 import org.springframework.stereotype.Component
 import org.springframework.beans.factory.annotation.Autowired
 import eis.domain.model.article.ArticleRepository
+import org.springframework.transaction.annotation.Transactional
+import com.wyb7.waffle.commons.xls.ErrorMessage
 
 /**
  * User: abin
@@ -12,11 +14,13 @@ import eis.domain.model.article.ArticleRepository
  * Time: 下午8:45
  */
 trait ReceivingOrderService {
-    def importByXls(order: ReceivingOrder, workbook: HSSFWorkbook): List[String]
+    def importByXls(order: ReceivingOrder, workbook: HSSFWorkbook): ErrorMessage
     def createNew(): ReceivingOrder
     def findById(id: Long): Option[ReceivingOrder]
+    def findAll(): List[ReceivingOrder]
 }
 
+@Transactional
 @Component
 class ReceivingOrderServiceImpl extends ReceivingOrderService {
     private var articleXlsReader: ArticleXlsReader = _
@@ -35,14 +39,14 @@ class ReceivingOrderServiceImpl extends ReceivingOrderService {
         this.receivingOrderRepository = receivingOrderRepository
     }
 
-    def importByXls(order: ReceivingOrder, workbook: HSSFWorkbook): List[String] = {
+    def importByXls(order: ReceivingOrder, workbook: HSSFWorkbook): ErrorMessage = {
         articleXlsReader.read(workbook) match {
             case Right(articles) => articles.foreach {article =>
                     order.addArticle(article)
                     article.receivingOrder = order
                     articleRepository.save(article)
                 }
-                List.empty[String]
+                ErrorMessage.NoError
             case Left(messages) => messages
         }
 
@@ -54,7 +58,12 @@ class ReceivingOrderServiceImpl extends ReceivingOrderService {
         order
     }
 
+    @Transactional(readOnly = true)
     def findById(id: Long): Option[ReceivingOrder] = {
         this.receivingOrderRepository.findById(id)
+    }
+    @Transactional(readOnly = true)
+    def findAll(): List[ReceivingOrder] = {
+        this.receivingOrderRepository.findAll()
     }
 }
