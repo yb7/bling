@@ -16,6 +16,12 @@ POST          /eis/wms/receiving-orders/:id/articles.xls        @controllers.eis
 GET           /eis/wms/receiving-orders/:id/articles        @controllers.eis.wms.ReceivingOrderController.articles(id: Long)
 DELETE        /eis/wms/receiving-orders/:orderId/articles/:articleId        @controllers.eis.wms.ReceivingOrderController.deleteArticle(orderId: Long, articleId: Long)
 
+GET           /eis/wms/warehouses        @controllers.eis.wms.WarehouseController.query()
+POST          /eis/wms/warehouses        @controllers.eis.wms.WarehouseController.create()
+PUT           /eis/wms/warehouses/:id        @controllers.eis.wms.WarehouseController.update(id: Long)
+DELETE        /eis/wms/warehouses/:id        @controllers.eis.wms.WarehouseController.delete(id: Long)
+
+
 
 
 # Map static resources from the /public folder to the /assets URL path                                            

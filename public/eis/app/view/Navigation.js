@@ -20,7 +20,8 @@ Ext.define('Bling.view.Navigation', {
                 text: '基础数据管理',
                 expanded: true,
                 children: [
-                    { id: 'company-mgmt-grid', text: '公司管理', leaf: true }
+                    { id: 'company-mgmt-grid', text: '公司管理', leaf: true },
+                    { id: 'warehouse-mgmt-grid', text: '仓库管理', leaf: true }
                 ]
             }
         ]

@@ -27,7 +27,6 @@ class CompanyController @Autowired()(companyService: CompanyService) extends Con
         domain.name = dto.name
         domain.shortCode = dto.shortCode
         companyService.createNew(domain)
-        CompanyDtoAssembler.toDto(domain)
         OkJson(successResult(CompanyDtoAssembler.toDto(domain)))
     }
 
