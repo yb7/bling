@@ -6,6 +6,7 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
 
     bodyPadding: 10,
     title: '入库新增',
+    closable:true,
 
     initComponent: function() {
         var me = this;

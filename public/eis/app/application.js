@@ -12,6 +12,7 @@ Ext.define('Bling.Application', {
 
     controllers: [
         'Navigation',
+        'ContentPanel',
         'shared.UploadFileWin',
         'foundation.CompanyMgmtGrid',
         'wms.ReceivingOrderMgmtGrid',
@@ -23,6 +24,5 @@ Ext.define('Bling.Application', {
     stores: [
         'foundation.Companies',
         'wms.ReceivingOrders'
-
     ]
 });

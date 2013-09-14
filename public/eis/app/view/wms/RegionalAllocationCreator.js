@@ -5,6 +5,7 @@ Ext.define('Bling.view.wms.RegionalAllocationCreator', {
 
     bodyPadding: 10,
     title: '区域调拨新增',
+    closable:true,
 
     initComponent: function() {
         var me = this;

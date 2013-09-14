@@ -18,7 +18,7 @@ Ext.define('Bling.controller.wms.RegionalAllocation', {
         this.control({
             'regional-allocation-grid #createBtn': {
                 click: function(){
-                    this.getContentPanel().add(this.getView('wms.RegionalAllocationCreator').create());
+                    this.application.fireEvent('addtocontentpanel', me.getView('wms.RegionalAllocationCreator').create());
                 }
             }
         })

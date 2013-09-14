@@ -31,8 +31,12 @@ Ext.define('Bling.controller.wms.ReceivingOrderMgmtGrid', {
     },
 
     createOrder: function() {
-        var order = this.getModel('wms.ReceivingOrder').create().save();
-        this.initOrderEditor(order.data)
+        var me = this;
+        var order = this.getModel('wms.ReceivingOrder').create().save({
+            success: function(rec, op) {
+                me.initOrderEditor(rec.data)
+            }
+        });
     },
     editOrder: function(view, record, item, index, e, opts) {
         this.initOrderEditor(record.data)
@@ -57,6 +61,6 @@ Ext.define('Bling.controller.wms.ReceivingOrderMgmtGrid', {
         var panel = this.getView('wms.ReceivingOrderEditor').create({articleStore: store});
         store.load();
         panel.getForm().setValues(data);
-        this.getContentPanel().add(panel);
+        this.application.fireEvent('addtocontentpanel', {view: panel});
     }
 });
