@@ -60,7 +60,10 @@ Ext.define('Bling.controller.wms.ReceivingOrderMgmtGrid', {
         });
         var panel = this.getView('wms.ReceivingOrderEditor').create({articleStore: store});
         store.load();
-        panel.getForm().setValues(data);
+        panel.down('form').getForm().setValues(data);
+//        panel.on('afterrender', function(cmp){
+//            cmp.down('form').getForm().setValues(data);
+//        });
         this.application.fireEvent('addtocontentpanel', {view: panel});
     }
 });

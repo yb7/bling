@@ -1,5 +1,5 @@
 Ext.define('Bling.view.wms.ReceivingOrderEditor', {
-    extend: 'Ext.form.Panel',
+    extend: 'Ext.panel.Panel',
     xtype: 'receiving-order-editor',
 
     requires: ['Ext.form.field.Hidden', 'Ext.form.field.File', 'Bling.model.article.Article'],
@@ -12,75 +12,81 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
         var me = this;
 
         Ext.apply(me, {
-            layout:'column',
-            defaults: {
-                margin:'5 5 5 5',
-                columnWidth: 0.33
+            layout: {
+                type: 'vbox',
+                align: 'stretch'
             },
-            fieldDefaults: {
-                labelWidth:70,
-                labelAlign:'left'
-            },
-            items: [
-                {
-                    xtype:'hidden',
-                    name:'id'
+            items: [{
+                xtype: 'form',
+                layout:'column',
+                defaults: {
+                    margin:'5 5 5 5',
+                    columnWidth: 0.33
                 },
-                {
-                    xtype:'hidden',
-                    name:'version'
+                fieldDefaults: {
+                    labelWidth:70,
+                    labelAlign:'left'
                 },
-                {
-                    xtype: 'textfield',
-                    name: 'bizCode',
-                    fieldLabel: '入库单号'
-                },
-                {
-                    xtype: 'datefield',
-                    name: 'receivingDate',
-                    fieldLabel: '入库日期'
-                },
-                {
-                    xtype: 'combobox',
-                    anchor: '100%',
-                    fieldLabel: '入库仓库'
-                },
-                {
-                    columnWidth: 1,
-                    xtype: 'tally-article-grid',
-                    store: me.articleStore,
-                    dockedItems: [{
-                        xtype: 'toolbar',
-                        dock: 'top',
-                        ui:'footer',
-                        items: ['->', {
-                                xtype: 'button',
-                                text: 'Excel模板下载'
-                            },
-                            {
-                                xtype: 'button',
-                                text: '从Excel导入',
-                                itemId: 'uploadFileBtn'
-                            },
-                            {
-                                xtype: 'button',
-                                itemId: 'deleteBtn',
-//                                disabled: true,
-                                text: '删除'
-                            }
-                        ]
-                    }, {
-                        xtype: 'toolbar',
-                        dock: 'bottom',
-                        ui:'footer',
-                        items: ['->',{
-                                text: '执行入库',
-                                itemId: 'executeBtn'
-                            }
-                        ]
-                    }]
-                }
-            ]
+                items: [
+                    {
+                        xtype:'hidden',
+                        name:'id'
+                    },
+                    {
+                        xtype:'hidden',
+                        name:'version'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'bizCode',
+                        fieldLabel: '入库单号'
+                    },
+                    {
+                        xtype: 'datefield',
+                        name: 'receivingDate',
+                        fieldLabel: '入库日期'
+                    },
+                    {
+                        xtype: 'combobox',
+                        anchor: '100%',
+                        fieldLabel: '入库仓库'
+                    }
+                ]
+            }, {
+                xtype: 'tally-article-grid',
+                flex: 1,
+                store: me.articleStore,
+                dockedItems: [{
+                    xtype: 'toolbar',
+                    dock: 'top',
+                    ui:'footer',
+                    items: ['->', {
+                        xtype: 'button',
+                        text: 'Excel模板下载'
+                    },
+                        {
+                            xtype: 'button',
+                            text: '从Excel导入',
+                            itemId: 'uploadFileBtn'
+                        },
+                        {
+                            xtype: 'button',
+                            itemId: 'deleteBtn',
+                            //                                disabled: true,
+                            text: '删除'
+                        }
+                    ]
+                }, {
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui:'footer',
+                    items: ['->',{
+                        text: '执行入库',
+                        itemId: 'executeBtn'
+                    }
+                    ]
+                }]
+            }]
         });
 
         me.callParent(arguments);
