@@ -26,6 +26,9 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
             },
             'receiving-order-editor #deleteBtn': {
                 click: this.deleteArticle
+            },
+            'receiving-order-editor #executeBtn': {
+                click: this.execute
             }
         })
     },
@@ -39,7 +42,7 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
     },
 
     uploadFile: function(cmp, value, opts) {
-        var id = cmp.up('form').down('hidden[name=id]').getValue();
+        var id = this.getOrderId(cmp);
         var postUrl = '/eis/wms/receiving-orders/' + id + '/articles.xls';
         var win = this.getView('shared.UploadFileWin').create({
             postUrl: postUrl
@@ -51,5 +54,14 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
         });
         win.show();
 
+    },
+    execute: function(btn) {
+        var id = this.getOrderId(btn);
+        var executeUrl = '/eis/wms/receiving-orders/' + id + '/execute';
+
+    },
+    getOrderId: function(cmp) {
+        cmp.up('receiving-order-editor').down('form hidden[name=id]').getValue();
     }
+
 });

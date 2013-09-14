@@ -2,7 +2,8 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
     extend: 'Ext.panel.Panel',
     xtype: 'receiving-order-editor',
 
-    requires: ['Ext.form.field.Hidden', 'Ext.form.field.File', 'Bling.model.article.Article'],
+    requires: ['Ext.form.field.Hidden', 'Ext.form.field.File', 'Bling.model.article.Article',
+        'Bling.view.shared.WarehouseCombo'],
 
     bodyPadding: 10,
     title: '入库新增',
@@ -47,9 +48,10 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
                         fieldLabel: '入库日期'
                     },
                     {
-                        xtype: 'combobox',
+                        xtype: 'warehouse-combo',
                         anchor: '100%',
-                        fieldLabel: '入库仓库'
+                        fieldLabel: '入库仓库',
+                        name: 'warehouseId'
                     }
                 ]
             }, {

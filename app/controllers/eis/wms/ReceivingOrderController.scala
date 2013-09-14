@@ -3,17 +3,18 @@ package controllers.eis.wms
 import org.springframework.stereotype.Component
 import play.api.mvc.{Controller, Action}
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
-import org.apache.commons.lang3.StringUtils
-import com.wyb7.waffle.commons.value.{Pagination, GenericActionResult}
+import com.wyb7.waffle.commons.value.Pagination
 import org.apache.commons.io.FileUtils
 import eis.domain.model.wms.ReceivingOrder
 import org.springframework.beans.factory.annotation.Autowired
 import controllers.support.JacksonJsonSupport
-import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.fasterxml.jackson.annotation.{JsonIgnore, JsonAutoDetect}
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility
 import com.wyb7.waffle.commons.value.GenericActionResult._
 import eis.application.wms.ReceivingOrderService
 import org.slf4j.LoggerFactory
+import org.joda.time.LocalDate
+import com.wyb7.waffle.commons.util.SafeGetter._
 
 /**
  * User: abin
@@ -54,12 +55,23 @@ class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrde
         receivingOrderService.deleteArticle(articleId)
         OkJson(successResult(s"删除货品 ID[$articleId]"))
     }
+
+    def execute(id: Long) = Action(jsonParser[ReceivingExecuteDto]) { implicit request =>
+        val order = this.receivingOrderService.execute(id, request.body)
+        OkJson(successResult(new ReceivingOrderHeadDto(order)))
+    }
 }
 
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
-class ReceivingOrderHeadDto(order: ReceivingOrder) {
+class ReceivingOrderHeadDto(_order: ReceivingOrder) {
+    @JsonIgnore
+    val order = _order
     val id = order.id
     val version = order.version
     val bizCode = order.bizCode
-    val receivingTime = order.receivingTime
+    val receivingDate = order.receivingDate
+    val warehouseId = nullSafe(order.warehouse.id)
+    val warehouseName = nullSafe(order.warehouse.name)
 }
+
+case class ReceivingExecuteDto(receivingDate: LocalDate, warehouseId: Long)
