@@ -1,10 +1,8 @@
-Ext.define('Bling.model.foundation.Article', {
+Ext.define('Bling.model.article.Article', {
     extend: 'Ext.data.Model',
     fields: [
         {name: 'id', type: 'int', convert: null},
         {name: 'version', type: 'int'},
-        {name: 'shortCode'},
-        {name: 'name'},
         {name: 'code', type: 'string'},
         {name: 'vendor1Id', type: 'int'},
         {name: 'vendor1Name', type: 'string'},

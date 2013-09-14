@@ -14,6 +14,7 @@ GET           /eis/wms/receiving-orders        @controllers.eis.wms.ReceivingOrd
 POST          /eis/wms/receiving-orders        @controllers.eis.wms.ReceivingOrderController.create()
 POST          /eis/wms/receiving-orders/:id/articles.xls        @controllers.eis.wms.ReceivingOrderController.importXls(id: Long)
 GET           /eis/wms/receiving-orders/:id/articles        @controllers.eis.wms.ReceivingOrderController.articles(id: Long)
+DELETE        /eis/wms/receiving-orders/:orderId/articles/:articleId        @controllers.eis.wms.ReceivingOrderController.deleteArticle(orderId: Long, articleId: Long)
 
 
 

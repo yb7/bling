@@ -7,7 +7,6 @@ Ext.define("Bling.view.foundation.CompanyMgmtGrid", {
         'Ext.form.field.Checkbox',
         'Ext.form.field.Text',
         'Ext.ux.statusbar.StatusBar'
-//        'Bling.store.foundation.Companies'
     ],
 
 

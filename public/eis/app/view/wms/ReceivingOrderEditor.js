@@ -2,7 +2,7 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
     extend: 'Ext.form.Panel',
     xtype: 'receiving-order-editor',
 
-    requires: ['Ext.form.field.Hidden'],
+    requires: ['Ext.form.field.Hidden', 'Ext.form.field.File', 'Bling.model.article.Article'],
 
     bodyPadding: 10,
     title: '入库新增',
@@ -47,6 +47,7 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
                 {
                     columnWidth: 1,
                     xtype: 'tally-article-grid',
+                    store: me.articleStore,
                     dockedItems: [{
                         xtype: 'toolbar',
                         dock: 'top',
@@ -62,6 +63,8 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
                             },
                             {
                                 xtype: 'button',
+                                itemId: 'deleteBtn',
+//                                disabled: true,
                                 text: '删除'
                             }
                         ]

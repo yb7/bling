@@ -4,10 +4,6 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
     views: ['shared.UploadFileWin'],
     refs: [
         {
-            selector: 'receiving-order-mgmt-grid',
-            ref: 'mainGrid'
-        },
-        {
             selector: 'content-panel',
             ref: 'contentPanel'
         }
@@ -18,8 +14,28 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
         this.control({
             'receiving-order-editor #uploadFileBtn': {
                 click: this.uploadFile
+            },
+            'receiving-order-editor tally-article-grid': {
+                afterrender: function(cmp) {
+                    cmp.getStore().load();
+                },
+                selectionchange: function(selModel, selections, opts) {
+//                    console.log(opts);
+//                    this.getCompanyMgmtGrid().down('#deleteBtn').setDisabled(selections.length === 0);
+                }
+            },
+            'receiving-order-editor #deleteBtn': {
+                click: this.deleteArticle
             }
         })
+    },
+
+    deleteArticle: function(cmp){
+        var grid = cmp.up('tally-article-grid');
+        var selected = grid.getSelectionModel().getSelection()[0];
+        if (selected) {
+            grid.getStore().remove(selected);
+        }
     },
 
     uploadFile: function(cmp, value, opts) {
@@ -29,8 +45,9 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
             postUrl: postUrl
         });
         win.on('upload-file-success', function(values) {
+            console.log("upload file success " + values);
             win.close();
-            cmp.up('receiving-order-editor').down('grid').getStore().load();
+            cmp.up('receiving-order-editor').down('tally-article-grid').getStore().load();
         });
         win.show();
 

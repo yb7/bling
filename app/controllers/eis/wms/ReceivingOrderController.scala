@@ -29,8 +29,7 @@ class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrde
         val file = request.body.file("file").get
         val workbook = new HSSFWorkbook(FileUtils.openInputStream(file.ref.file))
         logger.debug(s"import articles from ${file.filename}")
-        val order = receivingOrderService.findById(id).get
-        val errorMessages = receivingOrderService.importByXls(order, workbook)
+        val errorMessages = receivingOrderService.importByXls(id, workbook)
         val result = if (errorMessages.hasError) {
             failureResult(errorMessages.messages.mkString("<br/>"))
         } else {
@@ -43,13 +42,17 @@ class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrde
         OkJson(successResult(new ReceivingOrderHeadDto(order)))
     }
     def articles(id: Long) = Action {
-        OkJson(successResult(receivingOrderService.findById(id).get.listArticles.map(new ArticleDto(_))))
+        OkJson(successResult(receivingOrderService.articles(id).map(new ArticleDto(_))))
     }
 
     def findAll() = Action {
         OkJson(Pagination.createWithAllData(
             receivingOrderService.findAll.map(new ReceivingOrderHeadDto(_))
         ))
+    }
+    def deleteArticle(orderId: Long, articleId: Long) = Action {
+        receivingOrderService.deleteArticle(articleId)
+        OkJson(successResult(s"删除货品 ID[$articleId]"))
     }
 }
 

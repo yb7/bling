@@ -14,13 +14,15 @@ import com.wyb7.waffle.commons.util.SafeGetter._
 class ArticleDto(_article: Article) {
     @JsonIgnore
     private val article = _article
+    val id = article.id
+    val version = article.version
     val code: String = article.code
     val vendor1Id: Long = nullSafe(article.vendor1.id)
-    val vendor1Name: String = article.vendor1.name
+    val vendor1Name: String = nullSafe(article.vendor1.name)
     val vendor2Id: Long = nullSafe(article.vendor2.id)
-    val vendor2Name: String = article.vendor2.name
+    val vendor2Name: String = nullSafe(article.vendor2.name)
     val vendor3Id: Long = nullSafe(article.vendor3.id)
-    val vendor3Name: String = article.vendor3.name
+    val vendor3Name: String = nullSafe(article.vendor3.name)
     val vendorArticleName: String = article.vendorArticleName
     val vendorArticleNumber: String = article.vendorArticleNumber
     val name: String = article.name

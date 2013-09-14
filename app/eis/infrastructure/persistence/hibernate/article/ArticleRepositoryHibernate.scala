@@ -1,6 +1,6 @@
 package eis.infrastructure.persistence.hibernate.article
 
-import eis.infrastructure.persistence.hibernate.{Save, HibernateRepository}
+import eis.infrastructure.persistence.hibernate.{Delete, Save, HibernateRepository}
 import eis.domain.model.article.{ArticleRepository, Article}
 import org.springframework.stereotype.Repository
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository
 @Repository
 class ArticleRepositoryHibernate extends HibernateRepository with ArticleRepository
 
-with Save {
+with Save with Delete {
     type EntityType = Article
 
     def runtimeClass: Class[_] = classOf[Article]

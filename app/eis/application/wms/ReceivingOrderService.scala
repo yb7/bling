@@ -4,9 +4,10 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import eis.domain.model.wms.{ReceivingOrderRepository, ReceivingOrder}
 import org.springframework.stereotype.Component
 import org.springframework.beans.factory.annotation.Autowired
-import eis.domain.model.article.ArticleRepository
+import eis.domain.model.article.{Article, ArticleRepository}
 import org.springframework.transaction.annotation.Transactional
 import com.wyb7.waffle.commons.xls.ErrorMessage
+import org.hibernate.Hibernate
 
 /**
  * User: abin
@@ -14,10 +15,12 @@ import com.wyb7.waffle.commons.xls.ErrorMessage
  * Time: 下午8:45
  */
 trait ReceivingOrderService {
-    def importByXls(order: ReceivingOrder, workbook: HSSFWorkbook): ErrorMessage
+    def importByXls(orderId: Long, workbook: HSSFWorkbook): ErrorMessage
     def createNew(): ReceivingOrder
     def findById(id: Long): Option[ReceivingOrder]
     def findAll(): List[ReceivingOrder]
+    def articles(id: Long): List[Article]
+    def deleteArticle(articleId: Long)
 }
 
 @Transactional
@@ -39,7 +42,8 @@ class ReceivingOrderServiceImpl extends ReceivingOrderService {
         this.receivingOrderRepository = receivingOrderRepository
     }
 
-    def importByXls(order: ReceivingOrder, workbook: HSSFWorkbook): ErrorMessage = {
+    def importByXls(orderId: Long, workbook: HSSFWorkbook): ErrorMessage = {
+        val order = findById(orderId).get
         articleXlsReader.read(workbook) match {
             case Right(articles) => articles.foreach {article =>
                     order.addArticle(article)
@@ -65,5 +69,14 @@ class ReceivingOrderServiceImpl extends ReceivingOrderService {
     @Transactional(readOnly = true)
     def findAll(): List[ReceivingOrder] = {
         this.receivingOrderRepository.findAll()
+    }
+    @Transactional(readOnly = true)
+    def articles(id: Long): List[Article] = {
+        val articles = this.receivingOrderRepository.findById(id).get.listArticles
+        Hibernate.initialize(articles)
+        articles
+    }
+    def deleteArticle(articleId: Long) {
+        this.articleRepository.delete(articleId)
     }
 }

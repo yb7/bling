@@ -15,11 +15,11 @@ import eis.domain.model.wms.ReceivingOrder
 @Table(name = "article")
 class Article extends IdVersionEntity {
     var code: String = _
-    @ManyToOne(fetch=FetchType.LAZY, optional = false)
+    @ManyToOne(fetch=FetchType.EAGER, optional = false)
     var vendor1: Company = _
-    @ManyToOne(fetch=FetchType.LAZY, optional = false)
+    @ManyToOne(fetch=FetchType.EAGER)
     var vendor2: Company = _
-    @ManyToOne(fetch=FetchType.LAZY, optional = false)
+    @ManyToOne(fetch=FetchType.EAGER)
     var vendor3: Company = _
     var vendorArticleName: String = _
     var vendorArticleNumber: String = _

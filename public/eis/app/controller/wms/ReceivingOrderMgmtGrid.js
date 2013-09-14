@@ -32,13 +32,31 @@ Ext.define('Bling.controller.wms.ReceivingOrderMgmtGrid', {
 
     createOrder: function() {
         var order = this.getModel('wms.ReceivingOrder').create().save();
-        var panel = this.getView('wms.ReceivingOrderEditor').create();
-        panel.getForm().setValues(order.data);
-        this.getContentPanel().add(panel);
+        this.initOrderEditor(order.data)
     },
     editOrder: function(view, record, item, index, e, opts) {
-        var panel = this.getView('wms.ReceivingOrderEditor').create();
-        panel.getForm().setValues(record.data);
+        this.initOrderEditor(record.data)
+    },
+    initOrderEditor: function(data) {
+
+        var store = Ext.create('Ext.data.Store', {
+            model: 'Bling.model.article.Article',
+            proxy: {
+                type: 'rest',
+                url : '/eis/wms/receiving-orders/' + data.id + "/articles",
+                reader: {
+                    type: 'json',
+                    root: 'data'
+                },
+                writer: {
+                    type: 'json'
+                }
+            },
+            autoSync: true
+        });
+        var panel = this.getView('wms.ReceivingOrderEditor').create({articleStore: store});
+        store.load();
+        panel.getForm().setValues(data);
         this.getContentPanel().add(panel);
     }
 });
