@@ -22,7 +22,7 @@ trait ReceivingOrderService {
     def findAll(): List[ReceivingOrder]
     def articles(id: Long): List[Article]
     def deleteArticle(articleId: Long)
-    def execute(id: Long, dto: ReceivingExecuteDto): ReceivingOrder
+    def execute(id: Long, dto: ReceivingExecuteDto): Unit
 }
 
 @Transactional
@@ -87,11 +87,14 @@ class ReceivingOrderServiceImpl extends ReceivingOrderService {
         this.articleRepository.delete(articleId)
     }
 
-    def execute(id: Long, dto: ReceivingExecuteDto): ReceivingOrder = {
+    def execute(id: Long, dto: ReceivingExecuteDto) {
         val order = this.receivingOrderRepository.findById(id).get
         order.receivingDate = dto.receivingDate
         order.warehouse = warehouseRepository.findById(dto.warehouseId).get
+        order.listArticles.foreach {article =>
+            article.warehouse = order.warehouse
+            this.articleRepository.update(article)
+        }
         this.receivingOrderRepository.update(order)
-        order
     }
 }

@@ -20,8 +20,7 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
                     cmp.getStore().load();
                 },
                 selectionchange: function(selModel, selections, opts) {
-//                    console.log(opts);
-//                    this.getCompanyMgmtGrid().down('#deleteBtn').setDisabled(selections.length === 0);
+                    this.getContentPanel().getActiveTab().down('#deleteBtn').setDisabled(selections.length === 0);
                 }
             },
             'receiving-order-editor #deleteBtn': {
@@ -56,12 +55,31 @@ Ext.define('Bling.controller.wms.ReceivingOrderEditor', {
 
     },
     execute: function(btn) {
+        var me = this;
         var id = this.getOrderId(btn);
         var executeUrl = '/eis/wms/receiving-orders/' + id + '/execute';
-
+        var formValues = this.getEditor(btn).down('form').getForm().getValues();
+        delete formValues.bizCode;
+        delete formValues.id;
+        Ext.Ajax.request({
+            url:executeUrl,
+            method:'PUT',
+            jsonData:formValues,
+            success:function (response) {
+                me.getEditor(btn).close();
+                Ext.data.StoreManager.lookup('wms.ReceivingOrders').load();
+            },
+            failure:function(response){
+                var e = Ext.decode(response.responseText);
+                Ext.Msg.alert('警告', e.message);
+            }
+        });
     },
     getOrderId: function(cmp) {
-        cmp.up('receiving-order-editor').down('form hidden[name=id]').getValue();
+        return this.getEditor(cmp).down('form hidden[name=id]').getValue();
+    },
+    getEditor: function(cmp) {
+        return cmp.up('receiving-order-editor');
     }
 
 });

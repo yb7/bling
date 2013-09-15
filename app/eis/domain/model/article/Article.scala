@@ -3,7 +3,7 @@ package eis.domain.model.article
 import javax.persistence._
 import com.wyb7.waffle.domain.entity.IdVersionEntity
 import eis.domain.model.foundation.Company
-import eis.domain.model.wms.ReceivingOrder
+import eis.domain.model.wms.{Warehouse, ReceivingOrder}
 
 /**
  * User: abin
@@ -67,5 +67,7 @@ class Article extends IdVersionEntity {
 
     @ManyToOne(fetch=FetchType.LAZY)
     var receivingOrder: ReceivingOrder = _
+    @ManyToOne(fetch=FetchType.LAZY)
+    var warehouse: Warehouse = _
 
 }

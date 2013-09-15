@@ -57,8 +57,8 @@ class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrde
     }
 
     def execute(id: Long) = Action(jsonParser[ReceivingExecuteDto]) { implicit request =>
-        val order = this.receivingOrderService.execute(id, request.body)
-        OkJson(successResult(new ReceivingOrderHeadDto(order)))
+        this.receivingOrderService.execute(id, request.body)
+        Ok
     }
 }
 

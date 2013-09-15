@@ -19,9 +19,10 @@ Ext.define("Bling.view.wms.ReceivingOrderMgmtGrid", {
             xtype: 'grid',
             store: 'wms.ReceivingOrders',
             columns: [
-                {text: 'ID', dataIndex: 'id', hidden: true},
-                {text: '入库单号', dataIndex: 'bizCode'},
-                {text: '入库时间', dataIndex: 'receivingTime'}
+                {text: 'ID', dataIndex: 'id', hidden: true, width: 50},
+                {text: '入库单号', dataIndex: 'bizCode', width: 150},
+                {text: '入库时间', dataIndex: 'receivingDate', width: 150, xtype: 'datecolumn', format:'Y-m-d'},
+                {text: '仓库', dataIndex: 'warehouseName', flex:1}
             ],
             flex: 1
         };

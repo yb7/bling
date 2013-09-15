@@ -8,4 +8,5 @@ package eis.domain.model.article
 trait ArticleRepository {
     def save(article: Article): Long
     def delete(articleId: Long): Unit
+    def update(article: Article): Unit
 }

@@ -45,7 +45,7 @@ object JacksonJsonSupport {
 
         val simpleModule = new SimpleModule("SimpleModule", new Version(1, 0, 0, null, "wyb", "wyb"))
                 .addDeserializer(classOf[String], StringTrimToNull)
-                .addDeserializer(classOf[LocalDate], StringToJodaLocalDate)
+//                .addDeserializer(classOf[LocalDate], StringToJodaLocalDate)
                 .addDeserializer(classOf[LocalDateTime], StringToLocalDateTime)
                 .addDeserializer(classOf[DateTime], StringToDateTime)
                 .addDeserializer(classOf[java.util.Date], StringToUtilDate)
@@ -55,6 +55,7 @@ object JacksonJsonSupport {
                 //                    .addSerializer(classOf[java.util.Date], JustToString[java.util.Date])
                 .addSerializer(classOf[Enumeration#Value], JustToString[Enumeration#Value])
                 .addValueInstantiator(classOf[BigDecimal], {x: String =>BigDecimal(x)})
+                .addValueInstantiator(classOf[LocalDate], {x: String =>LocalDate.parse(x)})
         objectMapper.registerModule(simpleModule)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         objectMapper
@@ -65,9 +66,9 @@ object JacksonJsonSupport {
     private val StringTrimToNull = strTo {
         str => str
     }
-    private val StringToJodaLocalDate = strTo {
-        LocalDate.parse(_)
-    }
+//    private val StringToJodaLocalDate = strTo {
+//        LocalDate.parse(_)
+//    }
     private val StringToLocalDateTime = strTo {
         LocalDateTime.parse(_)
     }

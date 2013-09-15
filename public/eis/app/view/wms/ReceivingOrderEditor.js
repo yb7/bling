@@ -45,6 +45,7 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
                     {
                         xtype: 'datefield',
                         name: 'receivingDate',
+                        format:'Y-m-d',
                         fieldLabel: '入库日期'
                     },
                     {
@@ -63,9 +64,9 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
                     dock: 'top',
                     ui:'footer',
                     items: ['->', {
-                        xtype: 'button',
-                        text: 'Excel模板下载'
-                    },
+                            xtype: 'button',
+                            text: 'Excel模板下载'
+                        },
                         {
                             xtype: 'button',
                             text: '从Excel导入',
@@ -74,18 +75,12 @@ Ext.define('Bling.view.wms.ReceivingOrderEditor', {
                         {
                             xtype: 'button',
                             itemId: 'deleteBtn',
-                            //                                disabled: true,
+                            disabled: true,
                             text: '删除'
+                        }, '-', {
+                            text: '执行入库',
+                            itemId: 'executeBtn'
                         }
-                    ]
-                }, {
-                    xtype: 'toolbar',
-                    dock: 'bottom',
-                    ui:'footer',
-                    items: ['->',{
-                        text: '执行入库',
-                        itemId: 'executeBtn'
-                    }
                     ]
                 }]
             }]

@@ -2,10 +2,12 @@ Ext.define('Bling.model.wms.ReceivingOrder', {
     extend: 'Ext.data.Model',
     requires: ['Ext.data.proxy.Rest'],
     fields: [
-        {name: 'id', type: 'int', convert: null},
+        {name: 'id', type: 'int', useNull: true},
         {name: 'version', type: 'int'},
         {name: 'bizCode'},
-        {name: 'receivingTime', type:'date'}
+        {name: 'receivingDate', type:'date'},
+        {name: 'warehouseId', type: 'int'},
+        {name: 'warehouseName', type: 'string'}
     ],
     proxy: {
         type: 'rest',
