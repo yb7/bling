@@ -51,6 +51,7 @@ class ReceivingOrderController @Autowired()(receivingOrderService: ReceivingOrde
             receivingOrderService.findAll.map(new ReceivingOrderHeadDto(_))
         ))
     }
+    // TODO: 这里需要验证一下，只有未入库的可以删除
     def deleteArticle(orderId: Long, articleId: Long) = Action {
         receivingOrderService.deleteArticle(articleId)
         OkJson(successResult(s"删除货品 ID[$articleId]"))

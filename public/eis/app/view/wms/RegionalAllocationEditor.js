@@ -1,6 +1,6 @@
-Ext.define('Bling.view.wms.RegionalAllocationCreator', {
+Ext.define('Bling.view.wms.RegionalAllocationEditor', {
     extend: 'Ext.panel.Panel',
-    xtype: 'regional-allocation-creator',
+    xtype: 'regional-allocation-editor',
     requires: ['Bling.view.wms.TallyArticleGrid'],
 
     bodyPadding: 10,
@@ -17,7 +17,7 @@ Ext.define('Bling.view.wms.RegionalAllocationCreator', {
             },
             defaults:{
                 margin:'5 5 5 5',
-                columnWidth: 0.25
+                columnWidth: 0.33
             },
             fieldDefaults:{
                 labelWidth:60,
@@ -26,33 +26,32 @@ Ext.define('Bling.view.wms.RegionalAllocationCreator', {
             items: [{
                 xtype: 'textfield',
                 fieldLabel: '调拨单号',
-                name: 'bizCode',
-                columnWidth: 0.25
+                name: 'bizCode'
             }, {
                 xtype:'datefield',
                 fieldLabel:'调拨日期',
-                name:'allocationDate',
-                columnWidth: 0.25
+                name:'allocationDate'
             }, {
-                xtype:'combo',
-                fieldLabel:'发出区域',
-                name:'sendRegion',
-                columnWidth: 0.25
-            }, {
-                xtype:'datefield',
+                xtype:'warehouse-combo',
                 fieldLabel:'接收区域',
-                name:'receiveRegion',
-                columnWidth: 0.25
+                name:'receiveWarehouseId'
             }, {
                 xtype: 'textarea',
                 fieldLabel: '备注',
                 itemId: 'remark',
                 columnWidth: 1
+            },{
+                xtype:'hidden',
+                name:'id'
+            }, {
+                xtype:'hidden',
+                name:'version'
             }]
         };
         var grid = {
             xtype: 'tally-article-grid',
             flex:1,
+            store: me.articleStore,
             dockedItems: [
                 {
                     xtype: 'toolbar',
@@ -64,6 +63,11 @@ Ext.define('Bling.view.wms.RegionalAllocationCreator', {
                             itemId: 'addArticlesBtn',
                             text: '添加货品'
                         }, {
+                            xtype: 'button',
+                            itemId: 'deleteBtn',
+                            disabled: true,
+                            text: '删除'
+                        }, '-', {
                             xtype: 'button',
                             itemId: 'executeBtn',
                             text: '执行调拨'

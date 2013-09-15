@@ -14,4 +14,5 @@ trait BizCodeRepository {
  */
 object BizCodePrefix extends Enumeration {
     val ReceivingOrder = Value("REC")
+    val RegionalAllocation = Value("REA")
 }

@@ -12,30 +12,30 @@ Ext.define("Bling.view.wms.RegionalAllocationGrid", {
     ],
 
 
-//    bodyPadding: 10,
-
-    // Component initialization override: adds the top and bottom toolbars and setup headers renderer.
     initComponent: function() {
         var me = this;
         var grid = {
             xtype: 'grid',
             flex:1,
+            store: 'wms.RegionalAllocations',
             columns: [
-                {text: 'ID', dataIndex: 'id', hidden: true},
-                {text: '调拨单号'},
-                {text: '制单人'},
-                {text: '调拨日期'},
-                {text: '发出区域'},
-                {text: '接收区域'}
+                {text: 'ID', dataIndex: 'id', hidden: true, width: 50},
+                {text: '调拨单号', dataIndex: 'bizCode', width: 150},
+                {text: '调拨时间', dataIndex: 'allocationDate', width: 150, xtype: 'datecolumn', format:'Y-m-d'},
+                {text: '接受仓库', dataIndex: 'receiveWarehouseName', width:200},
+                {text: '备注', dataIndex: 'remark', flex:1}
             ],
             dockedItems: [
                 {
                     xtype: 'toolbar',
                     dock: 'top',
                     ui: 'footer',
-                    items: [ '->',
-                        {
+                    items: [ '->',{
                             xtype: 'button',
+                            text: '查询',
+                            itemId: 'searchBtn'
+                        }, '-', {
+                        xtype: 'button',
                             itemId: 'createBtn',
                             text: '新建'
                         }
@@ -50,36 +50,24 @@ Ext.define("Bling.view.wms.RegionalAllocationGrid", {
             },
             items: [{
                 xtype: 'form',
-                layout: {
-                    type: 'hbox',
-                    align: 'stretch',
-                    defaultMargins: {right: 5, left: 5}
+                layout: 'column',
+                defaults:{
+                    margin:'5 5 5 5',
+                    columnWidth: 0.33
+                },
+                fieldDefaults: {
+                    labelWidth: 60
                 },
 
                 bodyPadding: 10,
                 items: [{
                     xtype:'datefield',
                     fieldLabel:'调拨日期',
-                    name:'allocationDate',
-                    labelWidth: 70,
-                    flex: 1
+                    name:'allocationDate'
                 }, {
-                    xtype:'combo',
-                    fieldLabel:'发出区域',
-                    name:'sendRegion',
-                    labelWidth: 70,
-                    flex: 1
-                }, {
-                    xtype:'datefield',
+                    xtype:'warehouse-combo',
                     fieldLabel:'接收区域',
-                    name:'receiveRegion',
-                    labelWidth: 70,
-                    flex: 1
-                }, {
-                    xtype: 'button',
-                    text: '查询',
-                    itemId: 'searchBtn',
-                    flex: 1
+                    name:'receiveRegion'
                 }]
             }, grid]
         };

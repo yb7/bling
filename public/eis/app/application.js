@@ -7,7 +7,9 @@ Ext.define('Bling.Application', {
         "Viewport",
         "Header",
         "Navigation",
-        "ContentPanel"
+        "ContentPanel",
+        "shared.CompanyCombo",
+        "shared.SourceBizTypeCombo"
     ],
 
     controllers: [
@@ -17,14 +19,16 @@ Ext.define('Bling.Application', {
         'foundation.CompanyMgmtGrid',
         'wms.ReceivingOrderMgmtGrid',
         'wms.ReceivingOrderEditor',
-        'wms.RegionalAllocation',
-        'wms.RegionalAllocationCreator',
-        'wms.WarehouseMgmtGrid'
+        'wms.RegionalAllocations',
+        'wms.RegionalAllocationEditor',
+        'wms.WarehouseMgmtGrid',
+        'wms.ArticleSearchTabWin'
     ],
 
     stores: [
         'foundation.Companies',
         'wms.ReceivingOrders',
-        'wms.Warehouses'
+        'wms.Warehouses',
+        'wms.RegionalAllocations'
     ]
 });

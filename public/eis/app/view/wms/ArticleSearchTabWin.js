@@ -1,10 +1,17 @@
 Ext.define('Bling.view.wms.ArticleSearchTabWin', {
     extend: 'Ext.window.Window',
-//    xtype: 'article-search-tab-win',
-    requires: ['Bling.view.wms.ArticleSearchForm', 'Bling.view.wms.TallyArticleGrid'],
+    xtype: 'article-search-tab-win',
+    requires: ['Bling.view.wms.ArticleSearchForm',
+        'Bling.view.wms.TallyArticleGrid',
+        'Ext.data.Store',
+        'Ext.toolbar.Paging'],
 
     initComponent: function() {
         var me = this;
+        var store = Ext.create('Ext.data.Store', {
+            model: 'Bling.model.article.Article',
+            pageSize: 13
+        });
         Ext.apply(me, {
             title: '货品检索',
             maxWidth: 800,
@@ -13,13 +20,16 @@ Ext.define('Bling.view.wms.ArticleSearchTabWin', {
             items:[{
                 xtype: 'tabpanel',
                 items: [{
-                    title: '搜索结果',
+                    title: '搜索信息',
                     layout: 'anchor',
-                    xtype: 'wms-article-search-form'
+                    xtype: 'wms-article-search-form',
+                    width: 750
                 }, {
-                    width: 700,
+                    width: 750,
                     title: '搜索结果',
                     xtype: 'tally-article-grid',
+                    height: 445,
+                    store: store,
                     dockedItems: [
                         {
                             xtype: 'toolbar',
@@ -32,6 +42,12 @@ Ext.define('Bling.view.wms.ArticleSearchTabWin', {
                                     text: '添加货品'
                                 }
                             ]
+                        }, {
+                            xtype: 'pagingtoolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            store: store,   // same store GridPanel is using
+                            displayInfo: true
                         }
                     ]
                 }]

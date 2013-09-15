@@ -22,6 +22,15 @@ POST          /eis/wms/warehouses        @controllers.eis.wms.WarehouseControlle
 PUT           /eis/wms/warehouses/:id        @controllers.eis.wms.WarehouseController.update(id: Long)
 DELETE        /eis/wms/warehouses/:id        @controllers.eis.wms.WarehouseController.delete(id: Long)
 
+GET           /eis/wms/regional-allocations        @controllers.eis.wms.RegionalAllocationController.findAll()
+POST          /eis/wms/regional-allocations        @controllers.eis.wms.RegionalAllocationController.create()
+POST          /eis/wms/regional-allocations/:id/articles        @controllers.eis.wms.RegionalAllocationController.addArticles(id: Long)
+GET           /eis/wms/regional-allocations/:id/articles        @controllers.eis.wms.RegionalAllocationController.articles(id: Long)
+DELETE        /eis/wms/regional-allocations/:orderId/articles/:articleIds        @controllers.eis.wms.RegionalAllocationController.deleteArticle(orderId: Long, articleIds: String)
+PUT           /eis/wms/regional-allocations/:id/execute        @controllers.eis.wms.RegionalAllocationController.execute(id: Long)
+
+GET           /eis/article/articles        @controllers.eis.article.ArticleController.query()
+
 
 
 
