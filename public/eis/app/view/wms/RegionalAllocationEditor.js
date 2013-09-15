@@ -26,10 +26,12 @@ Ext.define('Bling.view.wms.RegionalAllocationEditor', {
             items: [{
                 xtype: 'textfield',
                 fieldLabel: '调拨单号',
-                name: 'bizCode'
+                name: 'bizCode',
+                disabled: true
             }, {
                 xtype:'datefield',
                 fieldLabel:'调拨日期',
+                format:'Y-m-d',
                 name:'allocationDate'
             }, {
                 xtype:'warehouse-combo',
@@ -38,7 +40,7 @@ Ext.define('Bling.view.wms.RegionalAllocationEditor', {
             }, {
                 xtype: 'textarea',
                 fieldLabel: '备注',
-                itemId: 'remark',
+                name: 'remark',
                 columnWidth: 1
             },{
                 xtype:'hidden',

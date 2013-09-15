@@ -60,7 +60,7 @@ Ext.define('Bling.controller.wms.RegionalAllocations', {
         store.load();
         panel.down('form').getForm().setValues(data);
         panel.down('form warehouse-combo[name=receiveWarehouseId]').setValue(Ext.create('Bling.model.wms.Warehouse',
-            {id: data.warehouseId, name: data.warehouseName}));
+            {id: data.receiveWarehouseId, name: data.receiveWarehouseName}));
         this.application.fireEvent('addtocontentpanel', {view: panel});
     }
 });

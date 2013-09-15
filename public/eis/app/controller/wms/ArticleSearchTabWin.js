@@ -7,6 +7,9 @@ Ext.define('Bling.controller.wms.ArticleSearchTabWin', {
         this.control({
             'article-search-tab-win tabpanel': {
                 tabchange: this.doSearch
+            },
+            'article-search-tab-win #addArticlesBtn': {
+                click: this.addArticles
             }
         })
     },
@@ -16,7 +19,7 @@ Ext.define('Bling.controller.wms.ArticleSearchTabWin', {
             if (!values[i])
                 delete values[i];
         }
-        values.TransitOrStorage = 'Storage';
+        values.inTransitOrStorage = 'Storage';
         return Ext.urlEncode(values);
     },
 
@@ -40,5 +43,13 @@ Ext.define('Bling.controller.wms.ArticleSearchTabWin', {
             store.loadPage(1);
 
         }
+    },
+    addArticles: function(btn) {
+        var selections = btn.up('tally-article-grid').getSelectionModel().getSelection();
+        var array = [];
+        Ext.each(selections, function(model, index, selectionsItself){
+            array.push(model.data.id);
+        });
+        btn.up('article-search-tab-win').fireEvent('add-articles', array);
     }
 });

@@ -4,7 +4,8 @@ Ext.define('Bling.view.wms.ArticleSearchTabWin', {
     requires: ['Bling.view.wms.ArticleSearchForm',
         'Bling.view.wms.TallyArticleGrid',
         'Ext.data.Store',
-        'Ext.toolbar.Paging'],
+        'Ext.toolbar.Paging',
+        'Ext.selection.CheckboxModel'],
 
     initComponent: function() {
         var me = this;
@@ -28,6 +29,7 @@ Ext.define('Bling.view.wms.ArticleSearchTabWin', {
                     width: 750,
                     title: '搜索结果',
                     xtype: 'tally-article-grid',
+                    selModel:Ext.create('Ext.selection.CheckboxModel',{mode:'MULTI'}),
                     height: 445,
                     store: store,
                     dockedItems: [
