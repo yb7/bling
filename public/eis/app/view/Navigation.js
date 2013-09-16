@@ -13,7 +13,8 @@ Ext.define('Bling.view.Navigation', {
                 expanded: true,
                 children: [
                     { id: 'receiving-order-mgmt-grid', text: '入库', leaf: true },
-                    { id: 'regional-allocation-grid', text: '区域调拨', leaf: true }
+                    { id: 'regional-allocation-grid', text: '区域调拨', leaf: true },
+                    { id: 'distribution-allocation-grid', text: '分销调拨', leaf: true }
                 ]
             },
             {

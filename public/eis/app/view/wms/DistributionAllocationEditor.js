@@ -1,10 +1,10 @@
-Ext.define('Bling.view.wms.RegionalAllocationEditor', {
+Ext.define('Bling.view.wms.DistributionAllocationEditor', {
     extend: 'Ext.panel.Panel',
-    xtype: 'regional-allocation-editor',
+    xtype: 'distribution-allocation-editor',
     requires: ['Bling.view.wms.TallyArticleGrid'],
 
     bodyPadding: 10,
-    title: '区域调拨维护',
+    title: '分销调拨维护',
     closable:true,
 
     initComponent: function() {
@@ -32,7 +32,7 @@ Ext.define('Bling.view.wms.RegionalAllocationEditor', {
                 xtype:'datefield',
                 fieldLabel:'调拨日期',
                 format:'Y-m-d',
-                name:'allocationDate'
+                name:'distributionDate'
             }, {
                 xtype:'warehouse-combo',
                 fieldLabel:'接收区域',

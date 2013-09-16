@@ -22,13 +22,16 @@ Ext.define('Bling.Application', {
         'wms.RegionalAllocations',
         'wms.RegionalAllocationEditor',
         'wms.WarehouseMgmtGrid',
-        'wms.ArticleSearchTabWin'
+        'wms.ArticleSearchTabWin',
+        'wms.DistributionAllocationGrid',
+        'wms.DistributionAllocationEditor'
     ],
 
     stores: [
         'foundation.Companies',
         'wms.ReceivingOrders',
         'wms.Warehouses',
-        'wms.RegionalAllocations'
+        'wms.RegionalAllocations',
+        'wms.DistributionAllocations'
     ]
 });
