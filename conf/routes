@@ -36,6 +36,13 @@ GET           /eis/wms/distribution-allocations/:id/articles        @controllers
 DELETE        /eis/wms/distribution-allocations/:orderId/articles/:articleIds        @controllers.eis.wms.DistributionAllocationController.deleteArticle(orderId: Long, articleIds: String)
 PUT           /eis/wms/distribution-allocations/:id/execute        @controllers.eis.wms.DistributionAllocationController.execute(id: Long)
 
+GET           /eis/wms/outward-processings        @controllers.eis.wms.OutwardProcessingController.findAll()
+POST          /eis/wms/outward-processings        @controllers.eis.wms.OutwardProcessingController.create()
+POST          /eis/wms/outward-processings/:id/articles        @controllers.eis.wms.OutwardProcessingController.addArticles(id: Long)
+GET           /eis/wms/outward-processings/:id/articles        @controllers.eis.wms.OutwardProcessingController.articles(id: Long)
+DELETE        /eis/wms/outward-processings/:orderId/articles/:articleIds        @controllers.eis.wms.OutwardProcessingController.deleteArticle(orderId: Long, articleIds: String)
+PUT           /eis/wms/outward-processings/:id/execute        @controllers.eis.wms.OutwardProcessingController.execute(id: Long)
+
 
 GET           /eis/article/articles        @controllers.eis.article.ArticleController.query()
 
