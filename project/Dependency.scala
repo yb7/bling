@@ -13,7 +13,7 @@ object Dependency {
 
     val Poi = "org.apache.poi" % "poi" % "3.7" exclude ("log4j", "log4j")
 
-//    val Quartz = "org.quartz-scheduler" % "quartz" % "2.1.5"
+    val Quartz = "org.quartz-scheduler" % "quartz" % "2.2.0"
 
 //    val CommonsFileupload = "commons-fileupload" % "commons-fileupload" % "1.2.2"
 

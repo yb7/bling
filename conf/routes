@@ -43,6 +43,13 @@ GET           /eis/wms/outward-processings/:id/articles        @controllers.eis.
 DELETE        /eis/wms/outward-processings/:orderId/articles/:articleIds        @controllers.eis.wms.OutwardProcessingController.deleteArticle(orderId: Long, articleIds: String)
 PUT           /eis/wms/outward-processings/:id/execute        @controllers.eis.wms.OutwardProcessingController.execute(id: Long)
 
+GET           /eis/wms/price-adjustments        @controllers.eis.wms.PriceAdjustmentController.findAll()
+POST          /eis/wms/price-adjustments        @controllers.eis.wms.PriceAdjustmentController.create()
+POST          /eis/wms/price-adjustments/:id/articles        @controllers.eis.wms.PriceAdjustmentController.addArticles(id: Long)
+GET           /eis/wms/price-adjustments/:id/articles        @controllers.eis.wms.PriceAdjustmentController.articles(id: Long)
+DELETE        /eis/wms/price-adjustments/:orderId/articles/:articleIds        @controllers.eis.wms.PriceAdjustmentController.deleteArticle(orderId: Long, articleIds: String)
+PUT           /eis/wms/price-adjustments/:id/execute        @controllers.eis.wms.PriceAdjustmentController.execute(id: Long)
+
 
 GET           /eis/article/articles        @controllers.eis.article.ArticleController.query()
 

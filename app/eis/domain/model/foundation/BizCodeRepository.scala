@@ -18,4 +18,5 @@ object BizCodePrefix extends Enumeration {
     val Article = Value("ART")
     val DistributionAllocation = Value("DSA")
     val OutwardProcessing = Value("OUT")
+    val PriceAdjustment = Value("PAD")
 }

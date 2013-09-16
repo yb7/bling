@@ -17,6 +17,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Bling.model.foundation.Company": [],
   "Ext.ux.ajax.DataSimlet": [],
   "Ext.ux.grid.TransformGrid": [],
+  "Bling.controller.wms.RegionalAllocationEditor": [],
   "Bling.controller.wms.WarehouseMgmtGrid": [],
   "ExtThemeNeptune.toolbar.Paging": [],
   "Bling.view.Header": [],
@@ -28,23 +29,29 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.DataView.DragSelector": [],
   "Bling.controller.ContentPanel": [],
   "Ext.ux.grid.menu.ListMenu": [],
+  "Bling.view.shared.WarehouseCombo": [],
+  "Bling.controller.wms.PriceAdjustmentEditor": [],
   "Ext.ux.form.MultiSelect": [
     "Ext.ux.Multiselect"
   ],
+  "Bling.controller.wms.DistributionAllocationGrid": [],
   "ExtThemeNeptune.grid.column.RowNumberer": [],
-  "Bling.controller.wms.RegionalAllocation": [],
+  "Bling.store.wms.PriceAdjustments": [],
   "Bling.store.foundation.Companies": [],
   "Ext.ux.PreviewPlugin": [],
+  "Bling.controller.wms.RegionalAllocations": [],
   "Bling.view.wms.WarehouseMgmtGrid": [],
   "Bling.view.ContentPanel": [],
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [],
   "Ext.ux.ProgressBarPager": [],
   "Ext.ux.CellDragDrop": [],
+  "Bling.controller.wms.ArticleSearchTabWin": [],
   "Ext.ux.ajax.Simlet": [],
   "Ext.ux.SlidingPager": [],
   "Ext.ux.TabReorderer": [],
   "Ext.ux.grid.filter.NumericFilter": [],
+  "Bling.view.wms.OutwardProcessingEditor": [],
   "ExtThemeNeptune.panel.Table": [],
   "Bling.controller.foundation.CompanyMgmtGrid": [],
   "Ext.ux.event.Recorder": [],
@@ -53,47 +60,62 @@ Ext.ClassManager.addNameAlternateMappings({
   "Bling.model.wms.ReceivingOrder": [],
   "Bling.view.Main": [],
   "Ext.ux.ajax.SimManager": [],
-  "Bling.controller.wms.RegionalAllocationCreator": [],
-  "Bling.view.wms.RegionalAllocationCreator": [],
+  "Bling.controller.wms.OutwardProcessingGrid": [],
+  "Bling.model.wms.RegionalAllocation": [],
   "Ext.ux.grid.filter.BooleanFilter": [],
   "Ext.ux.TabScrollerMenu": [],
   "ExtThemeNeptune.menu.Separator": [],
+  "Bling.model.wms.OutwardProcessing": [],
   "Ext.ux.IFrame": [],
+  "Bling.store.wms.DistributionAllocations": [],
   "Ext.ux.form.SearchField": [],
   "Ext.ux.dd.CellFieldDropZone": [],
   "Ext.ux.LiveSearchGridPanel": [],
   "Ext.ux.grid.filter.DateFilter": [],
   "Ext.ux.TreePicker": [],
+  "Bling.view.wms.OutwardProcessingGrid": [],
   "ExtThemeNeptune.grid.RowEditor": [],
   "ExtThemeNeptune.picker.Month": [],
   "Bling.controller.Navigation": [],
   "Bling.controller.shared.UploadFileWin": [],
+  "Bling.view.shared.SourceBizTypeCombo": [],
+  "Bling.model.wms.DistributionAllocation": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "Ext.data.PagingMemoryProxy"
   ],
+  "Bling.view.wms.RegionalAllocationEditor": [],
   "ExtThemeNeptune.menu.Menu": [],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.grid.filter.Filter": [],
   "Ext.ux.GroupTabRenderer": [],
+  "Bling.view.wms.DistributionAllocationGrid": [],
   "Ext.ux.FieldReplicator": [],
   "Bling.view.wms.RegionalAllocationGrid": [],
   "ExtThemeNeptune.panel.Panel": [],
   "Ext.ux.grid.filter.ListFilter": [],
   "Bling.Application": [],
   "Bling.store.wms.Warehouses": [],
-  "Ext.ux.dd.PanelFieldDragZone": [],
   "Bling.model.wms.Warehouse": [],
+  "Ext.ux.dd.PanelFieldDragZone": [],
+  "Bling.controller.wms.PriceAdjustmentGrid": [],
+  "Bling.model.wms.PriceAdjustment": [],
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "ExtThemeNeptune.tab.Tab": [],
+  "Bling.controller.wms.DistributionAllocationEditor": [],
+  "Bling.view.shared.RedOrBlueCombo": [],
   "Ext.ux.GMapPanel": [],
+  "Bling.view.wms.PriceAdjustmentEditor": [],
   "Bling.model.article.Article": [],
   "Ext.ux.GroupTabPanel": [],
   "Ext.ux.DataView.LabelEditor": [],
   "Ext.ux.grid.filter.StringFilter": [],
   "Ext.ux.statusbar.ValidationStatus": [],
+  "Bling.store.wms.OutwardProcessings": [],
   "Ext.ux.layout.Center": [],
+  "Bling.view.wms.PriceAdjustmentGrid": [],
   "Ext.ux.DataView.Animated": [],
   "ExtThemeNeptune.resizer.Splitter": [],
+  "Bling.view.shared.CompanyCombo": [],
   "Bling.view.foundation.CompanyMgmtGrid": [],
   "Ext.ux.statusbar.StatusBar": [
     "Ext.ux.StatusBar"
@@ -101,8 +123,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "ExtThemeNeptune.layout.component.Dock": [],
   "Ext.ux.grid.menu.RangeMenu": [],
   "Ext.ux.RowExpander": [],
-  "Ext.ux.event.Player": [],
   "Bling.view.wms.ArticleSearchTabWin": [],
+  "Ext.ux.event.Player": [],
   "ExtThemeNeptune.panel.Tool": [],
   "Bling.view.wms.ArticleSearchForm": [],
   "Ext.ux.ToolbarDroppable": [],
@@ -111,11 +133,13 @@ Ext.ClassManager.addNameAlternateMappings({
   "Bling.controller.Main": [],
   "Ext.ux.DataView.Draggable": [],
   "Bling.controller.wms.ReceivingOrderMgmtGrid": [],
+  "Bling.controller.wms.OutwardProcessingEditor": [],
   "Ext.ux.TabCloseMenu": [],
   "Bling.view.wms.TallyArticleGrid": [],
   "Bling.view.Viewport": [],
   "Ext.ux.DataTip": [],
   "Ext.ux.grid.filter.DateTimeFilter": [],
+  "Bling.store.wms.RegionalAllocations": [],
   "Ext.ux.form.ItemSelector": [
     "Ext.ux.ItemSelector"
   ],
@@ -124,13 +148,15 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.Spotlight": [],
   "ExtThemeNeptune.form.field.HtmlEditor": [],
   "Ext.ux.grid.FiltersFeature": [],
-  "ExtThemeNeptune.Component": []
+  "ExtThemeNeptune.Component": [],
+  "Bling.view.wms.DistributionAllocationEditor": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.container.ButtonGroup": [],
   "Bling.model.foundation.Company": [],
   "Ext.ux.ajax.DataSimlet": [],
   "Ext.ux.grid.TransformGrid": [],
+  "Bling.controller.wms.RegionalAllocationEditor": [],
   "Bling.controller.wms.WarehouseMgmtGrid": [],
   "ExtThemeNeptune.toolbar.Paging": [],
   "Bling.view.Header": [
@@ -150,16 +176,22 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.DataView.DragSelector": [],
   "Bling.controller.ContentPanel": [],
   "Ext.ux.grid.menu.ListMenu": [],
+  "Bling.view.shared.WarehouseCombo": [
+    "widget.warehouse-combo"
+  ],
+  "Bling.controller.wms.PriceAdjustmentEditor": [],
   "Ext.ux.form.MultiSelect": [
     "widget.multiselect",
     "widget.multiselectfield"
   ],
+  "Bling.controller.wms.DistributionAllocationGrid": [],
   "ExtThemeNeptune.grid.column.RowNumberer": [],
-  "Bling.controller.wms.RegionalAllocation": [],
+  "Bling.store.wms.PriceAdjustments": [],
   "Bling.store.foundation.Companies": [],
   "Ext.ux.PreviewPlugin": [
     "plugin.preview"
   ],
+  "Bling.controller.wms.RegionalAllocations": [],
   "Bling.view.wms.WarehouseMgmtGrid": [
     "widget.warehouse-mgmt-grid"
   ],
@@ -174,6 +206,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.CellDragDrop": [
     "plugin.celldragdrop"
   ],
+  "Bling.controller.wms.ArticleSearchTabWin": [],
   "Ext.ux.ajax.Simlet": [
     "simlet.basic"
   ],
@@ -181,6 +214,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.TabReorderer": [],
   "Ext.ux.grid.filter.NumericFilter": [
     "gridfilter.numeric"
+  ],
+  "Bling.view.wms.OutwardProcessingEditor": [
+    "widget.outward-processing-editor"
   ],
   "ExtThemeNeptune.panel.Table": [],
   "Bling.controller.foundation.CompanyMgmtGrid": [],
@@ -194,10 +230,8 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.app-main"
   ],
   "Ext.ux.ajax.SimManager": [],
-  "Bling.controller.wms.RegionalAllocationCreator": [],
-  "Bling.view.wms.RegionalAllocationCreator": [
-    "widget.regional-allocation-creator"
-  ],
+  "Bling.controller.wms.OutwardProcessingGrid": [],
+  "Bling.model.wms.RegionalAllocation": [],
   "Ext.ux.grid.filter.BooleanFilter": [
     "gridfilter.boolean"
   ],
@@ -205,9 +239,11 @@ Ext.ClassManager.addNameAliasMappings({
     "plugin.tabscrollermenu"
   ],
   "ExtThemeNeptune.menu.Separator": [],
+  "Bling.model.wms.OutwardProcessing": [],
   "Ext.ux.IFrame": [
     "widget.uxiframe"
   ],
+  "Bling.store.wms.DistributionAllocations": [],
   "Ext.ux.form.SearchField": [
     "widget.searchfield"
   ],
@@ -219,18 +255,31 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.TreePicker": [
     "widget.treepicker"
   ],
+  "Bling.view.wms.OutwardProcessingGrid": [
+    "widget.outward-processing-grid"
+  ],
   "ExtThemeNeptune.grid.RowEditor": [],
   "ExtThemeNeptune.picker.Month": [],
   "Bling.controller.Navigation": [],
   "Bling.controller.shared.UploadFileWin": [],
+  "Bling.view.shared.SourceBizTypeCombo": [
+    "widget.source-biz-type-combo"
+  ],
+  "Bling.model.wms.DistributionAllocation": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "proxy.pagingmemory"
+  ],
+  "Bling.view.wms.RegionalAllocationEditor": [
+    "widget.regional-allocation-editor"
   ],
   "ExtThemeNeptune.menu.Menu": [],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.grid.filter.Filter": [],
   "Ext.ux.GroupTabRenderer": [
     "plugin.grouptabrenderer"
+  ],
+  "Bling.view.wms.DistributionAllocationGrid": [
+    "widget.distribution-allocation-grid"
   ],
   "Ext.ux.FieldReplicator": [],
   "Bling.view.wms.RegionalAllocationGrid": [
@@ -242,12 +291,21 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Bling.Application": [],
   "Bling.store.wms.Warehouses": [],
-  "Ext.ux.dd.PanelFieldDragZone": [],
   "Bling.model.wms.Warehouse": [],
+  "Ext.ux.dd.PanelFieldDragZone": [],
+  "Bling.controller.wms.PriceAdjustmentGrid": [],
+  "Bling.model.wms.PriceAdjustment": [],
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "ExtThemeNeptune.tab.Tab": [],
+  "Bling.controller.wms.DistributionAllocationEditor": [],
+  "Bling.view.shared.RedOrBlueCombo": [
+    "widget.red-or-blue-combo"
+  ],
   "Ext.ux.GMapPanel": [
     "widget.gmappanel"
+  ],
+  "Bling.view.wms.PriceAdjustmentEditor": [
+    "widget.price-adjustment-editor"
   ],
   "Bling.model.article.Article": [],
   "Ext.ux.GroupTabPanel": [
@@ -258,11 +316,18 @@ Ext.ClassManager.addNameAliasMappings({
     "gridfilter.string"
   ],
   "Ext.ux.statusbar.ValidationStatus": [],
+  "Bling.store.wms.OutwardProcessings": [],
   "Ext.ux.layout.Center": [
     "layout.ux.center"
   ],
+  "Bling.view.wms.PriceAdjustmentGrid": [
+    "widget.price-adjustment-grid"
+  ],
   "Ext.ux.DataView.Animated": [],
   "ExtThemeNeptune.resizer.Splitter": [],
+  "Bling.view.shared.CompanyCombo": [
+    "widget.company-combo"
+  ],
   "Bling.view.foundation.CompanyMgmtGrid": [
     "widget.company-mgmt-grid"
   ],
@@ -272,8 +337,10 @@ Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.layout.component.Dock": [],
   "Ext.ux.grid.menu.RangeMenu": [],
   "Ext.ux.RowExpander": [],
+  "Bling.view.wms.ArticleSearchTabWin": [
+    "widget.article-search-tab-win"
+  ],
   "Ext.ux.event.Player": [],
-  "Bling.view.wms.ArticleSearchTabWin": [],
   "ExtThemeNeptune.panel.Tool": [],
   "Bling.view.wms.ArticleSearchForm": [
     "widget.wms-article-search-form"
@@ -286,6 +353,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Bling.controller.Main": [],
   "Ext.ux.DataView.Draggable": [],
   "Bling.controller.wms.ReceivingOrderMgmtGrid": [],
+  "Bling.controller.wms.OutwardProcessingEditor": [],
   "Ext.ux.TabCloseMenu": [
     "plugin.tabclosemenu"
   ],
@@ -299,6 +367,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.grid.filter.DateTimeFilter": [
     "gridfilter.datetime"
   ],
+  "Bling.store.wms.RegionalAllocations": [],
   "Ext.ux.form.ItemSelector": [
     "widget.itemselector",
     "widget.itemselectorfield"
@@ -314,7 +383,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.grid.FiltersFeature": [
     "feature.filters"
   ],
-  "ExtThemeNeptune.Component": []
+  "ExtThemeNeptune.Component": [],
+  "Bling.view.wms.DistributionAllocationEditor": [
+    "widget.distribution-allocation-editor"
+  ]
 });
 Ext.Loader.loadScript("../../ext/packages/ext-theme-neptune/overrides/Component.js");
 Ext.Loader.loadScript("../../ext/packages/ext-theme-neptune/overrides/panel/Panel.js");

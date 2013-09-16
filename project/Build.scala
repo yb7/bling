@@ -17,7 +17,7 @@ object ApplicationBuild extends Build {
     JodaTime, JodaMoney, JodaConvert, HibernateUserType,
     CommonsLang3, CommonsIo, Poi,
     SpringContext, SpringContextSupport, SpringBean, SpringTx, SpringORM,
-    CGLib
+    CGLib, Quartz
   ) ++ Group.JavaMail ++ Group.Jackson
 
 

@@ -1,8 +1,8 @@
 package eis.domain.model.wms
 
 import javax.persistence._
-import com.wyb7.waffle.domain.entity.{StringEnumUserType, IdVersionEntity}
-import org.hibernate.annotations.{TypeDef, TypeDefs, Type}
+import com.wyb7.waffle.domain.entity.IdVersionEntity
+import org.hibernate.annotations.Type
 import org.joda.time.LocalDate
 import com.wyb7.waffle.commons.util.JTypePredef._
 import eis.domain.model.article.Article
@@ -13,25 +13,17 @@ import collection.JavaConverters._
  * Date: 13-9-15
  * Time: 上午8:17
  */
-//@TypeDefs(
-//    Array(new TypeDef(name = "redOrBlue", typeClass = classOf[RedOrBlue])
-//))
 @Entity
-@Table(name = "wms_outward_processing")
-class OutwardProcessing extends IdVersionEntity {
+@Table(name = "wms_price_adjustment")
+class PriceAdjustment extends IdVersionEntity {
     var bizCode: String = _
 
-    // 只能是 红字 或者 蓝字
-    var redOrBlue: String = _
 
     @Type(`type`="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    var outwardDate: LocalDate = _
-
-    @Type(`type`="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    var expectedCompletionDate: LocalDate = _
+    var effectiveDate: LocalDate = _
 
     @ManyToMany
-    @JoinTable(name = "wms_outward_processing_articles",
+    @JoinTable(name = "wms_price_adjustment_articles",
         joinColumns = Array(new JoinColumn(name = "distribution_allocation_id")),
         inverseJoinColumns = Array(new JoinColumn(name = "article_id"))
     )
@@ -46,14 +38,5 @@ class OutwardProcessing extends IdVersionEntity {
 
     def listArticles = articles.asScala.toSet
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    var receiveWarehouse: Warehouse = _
-
     var remark: String = _
 }
-
-//object RedOrBlue extends Enumeration {
-//    val RED, BLUE = Value
-//}
-
-//class RedOrBlue extends StringEnumUserType[RedOrBlue]

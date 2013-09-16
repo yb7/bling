@@ -15,7 +15,8 @@ Ext.define('Bling.view.Navigation', {
                     { id: 'receiving-order-mgmt-grid', text: '入库', leaf: true },
                     { id: 'regional-allocation-grid', text: '区域调拨', leaf: true },
                     { id: 'distribution-allocation-grid', text: '分销调拨', leaf: true },
-                    { id: 'outward-processing-grid', text: '外发', leaf: true }
+                    { id: 'outward-processing-grid', text: '外发', leaf: true },
+                    { id: 'price-adjustment-grid', text: '调价', leaf: true }
                 ]
             },
             {

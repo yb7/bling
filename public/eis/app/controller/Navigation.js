@@ -4,7 +4,7 @@ Ext.define('Bling.controller.Navigation', {
     views: ['foundation.CompanyMgmtGrid',
         'wms.ReceivingOrderMgmtGrid', 'wms.RegionalAllocationGrid',
         'wms.WarehouseMgmtGrid', 'wms.DistributionAllocationGrid',
-        'wms.OutwardProcessingGrid'],
+        'wms.OutwardProcessingGrid', 'wms.PriceAdjustmentGrid'],
 
     refs: [
         {

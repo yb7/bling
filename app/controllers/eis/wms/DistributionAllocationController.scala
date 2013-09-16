@@ -19,30 +19,30 @@ import org.joda.time.LocalDate
  * Time: 上午8:14
  */
 @Component
-class DistributionAllocationController @Autowired()(DistributionAllocationService: DistributionAllocationService)
+class DistributionAllocationController @Autowired()(distributionAllocationService: DistributionAllocationService)
         extends Controller with JacksonJsonSupport {
     private val logger = LoggerFactory.getLogger(this.getClass)
 
     def create() = Action {
-        val order = DistributionAllocationService.createNew()
+        val order = distributionAllocationService.createNew()
         OkJson(successResult(new DistributionAllocationHeadDto(order)))
     }
     def articles(id: Long) = Action {
-        OkJson(successResult(DistributionAllocationService.articles(id).map(new ArticleDto(_))))
+        OkJson(successResult(distributionAllocationService.articles(id).map(new ArticleDto(_))))
     }
     def findAll() = Action {
-        OkJson(successResult(DistributionAllocationService.findAll().map(new DistributionAllocationHeadDto(_))))
+        OkJson(successResult(distributionAllocationService.findAll().map(new DistributionAllocationHeadDto(_))))
     }
     def execute(id: Long) = Action(jsonParser[DistributionAllocationExecuteDto]) { implicit request =>
-        DistributionAllocationService.execute(id, request.body)
+        distributionAllocationService.execute(id, request.body)
         Ok
     }
     def addArticles(orderId: Long) = Action(jsonParser[Set[Long]]) { implicit request =>
-        DistributionAllocationService.addArticles(orderId, request.body)
+        distributionAllocationService.addArticles(orderId, request.body)
         Ok
     }
     def deleteArticle(orderId: Long, articleIds: String) = Action {
-        DistributionAllocationService.deleteArticle(orderId, articleIds.split(",").toSet.map{x: String => x.toLong})
+        distributionAllocationService.deleteArticle(orderId, articleIds.split(",").toSet.map{x: String => x.toLong})
         OkJson(successResult(s"删除货品 ID[${articleIds.mkString(",")}]"))
     }
 }

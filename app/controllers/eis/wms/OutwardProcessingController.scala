@@ -9,7 +9,7 @@ import eis.application.wms.OutwardProcessingService
 import com.fasterxml.jackson.annotation.{JsonIgnore, JsonAutoDetect}
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility
 import com.wyb7.waffle.commons.util.SafeGetter._
-import eis.domain.model.wms.{RedOrBlue, OutwardProcessing}
+import eis.domain.model.wms.OutwardProcessing
 import com.wyb7.waffle.commons.value.GenericActionResult._
 import org.joda.time.LocalDate
 
