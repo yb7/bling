@@ -2,11 +2,12 @@ package eis.domain.service.wms
 
 import eis.domain.model.wms.PriceAdjustmentRepository
 import org.springframework.stereotype.Service
-import util.JobInTransaction
+import util.{JobInSpringContext, JobInTransaction}
 import org.quartz.JobExecutionContext
 import org.springframework.beans.factory.annotation.Autowired
 import eis.domain.model.article.{ArticleRepository, Article}
 import org.slf4j.LoggerFactory
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * User: abin
@@ -17,10 +18,21 @@ trait PriceAdjustmentExecutor {
     def execute(priceAdjustmentId: Long)
 }
 
+@Transactional
 @Service
-class PriceAdjustmentExecutorImpl @Autowired()(priceAdjustmentRepository: PriceAdjustmentRepository, articleRepository: ArticleRepository)
-        extends PriceAdjustmentExecutor {
+class PriceAdjustmentExecutorImpl extends PriceAdjustmentExecutor {
     private val logger = LoggerFactory.getLogger(this.getClass)
+
+    private var priceAdjustmentRepository: PriceAdjustmentRepository = _
+    @Autowired
+    def setPriceAdjustmentRepository(priceAdjustmentRepository: PriceAdjustmentRepository) {
+        this.priceAdjustmentRepository = priceAdjustmentRepository
+    }
+    private var articleRepository: ArticleRepository = _
+    @Autowired
+    def setArticleRepository(articleRepository: ArticleRepository) {
+        this.articleRepository = articleRepository
+    }
 
     def execute(priceAdjustmentId: Long) {
         logger.debug(s"execute adjust for ${priceAdjustmentId}")
@@ -46,9 +58,9 @@ class PriceAdjustmentExecutorImpl @Autowired()(priceAdjustmentRepository: PriceA
     }
 }
 
-class PriceAdjustmentJob extends JobInTransaction {
+class PriceAdjustmentJob extends JobInSpringContext {
     lazy val priceAdjustmentExecutor = getBean(classOf[PriceAdjustmentExecutor])
-    def executeInTransaction(context: JobExecutionContext) {
+    def execute(context: JobExecutionContext) {
         val id = context.getMergedJobDataMap.get("PriceAdjustmentId").asInstanceOf[String].toLong
         priceAdjustmentExecutor.execute(id)
     }

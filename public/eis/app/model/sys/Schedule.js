@@ -9,6 +9,7 @@ Ext.define('Bling.model.sys.Schedule', {
         {name: 'state'},
         {name: 'jobKey'}
     ],
+    idProperty: 'triggerKey',
     proxy: {
         type: 'rest',
         url : '/eis/sys/job/triggers',

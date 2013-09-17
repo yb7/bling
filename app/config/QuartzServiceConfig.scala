@@ -24,19 +24,20 @@ import org.springframework.transaction.PlatformTransactionManager
 class QuartzServiceConfig {
     @Autowired
     var dataSource: DataSource = _
-    @Autowired
-    var transactionManager: PlatformTransactionManager = _
+//    @Autowired
+//    var transactionManager: PlatformTransactionManager = _
 
     @Bean(destroyMethod = "destroy")
     def quartzSchedulerFactory = {
         val sf = new SchedulerFactoryBean
         val properties = new Properties
         properties.setProperty(StdSchedulerFactory.PROP_TABLE_PREFIX, "QUTZ_")
+//        properties.setProperty(StdSchedulerFactory.PROP_SCHED_WRAP_JOB_IN_USER_TX, "true")
 
         sf.setQuartzProperties(properties)
         sf.setJobFactory(new SpringBeanJobFactory)
         sf.setDataSource(dataSource)
-        sf.setTransactionManager(transactionManager)
+//        sf.setTransactionManager(transactionManager)
         sf.setJobDetails(Array(priceAdjustmentJob))
         sf.setApplicationContextSchedulerContextKey("applicationContext")
         sf.setStartupDelay(60)
