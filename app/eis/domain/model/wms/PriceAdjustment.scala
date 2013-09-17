@@ -39,4 +39,23 @@ class PriceAdjustment extends IdVersionEntity {
     def listArticles = articles.asScala.toSet
 
     var remark: String = _
+
+    var retailPriceDirectly: BigDecimal = _
+
+    var incrementBaseOnCost: BigDecimal = _
+    var coefficientBaseOnCost: BigDecimal = _
+
+    var incrementBaseOnRetailPrice: BigDecimal = _
+    var coefficientBaseOnRetailPrice: BigDecimal = _
+
+    var excludeUnits0: Boolean = false
+    var excludeUnits1: Boolean = false
+    var excludeUnits2: Boolean = false
+    var excludeUnits3: Boolean = false
+    var excludeUnits4: Boolean = false
+    var excludeUnits5: Boolean = false
+    var excludeUnits6: Boolean = false
+    var excludeUnits7: Boolean = false
+    var excludeUnits8: Boolean = false
+    var excludeUnits9: Boolean = false
 }

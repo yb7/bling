@@ -20,11 +20,17 @@ Ext.define("Bling.view.wms.PriceAdjustmentGrid", {
             store: 'wms.PriceAdjustments',
             columns: [
                 {text: 'ID', dataIndex: 'id', hidden: true, width: 50},
-                {text: '红蓝字', dataIndex: 'redOrBlue', width: 70},
-                {text: '外发单号', dataIndex: 'bizCode', width: 150},
-                {text: '外发时间', dataIndex: 'outwardDate', width: 150, xtype: 'datecolumn', format:'Y-m-d'},
-                {text: '预期完成日期', dataIndex: 'expectedCompletionDate', width: 150, xtype: 'datecolumn', format:'Y-m-d'},
-                {text: '接受仓库', dataIndex: 'receiveWarehouseName', width:200},
+                {text: '调价单号', dataIndex: 'bizCode', width: 150},
+                {text: '生效日期', dataIndex: 'effectiveDate', width: 150, xtype: 'datecolumn', format:'Y-m-d'},
+                {text: '指定零售价', dataIndex: 'retailPriceDirectly', width: 150},
+
+                {text: '成本增量', dataIndex: 'incrementBaseOnCost', width: 150},
+                {text: '成本系数', dataIndex: 'coefficientBaseOnCost', width: 150},
+
+                {text: '零售价增量', dataIndex: 'incrementBaseOnRetailPrice', width: 150},
+                {text: '零售价系数', dataIndex: 'coefficientBaseOnRetailPrice', width: 150},
+
+                {text: '个位不包含', dataIndex: 'excludeUnits', width: 200},
                 {text: '备注', dataIndex: 'remark', flex:1}
             ],
             dockedItems: [

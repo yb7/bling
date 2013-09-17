@@ -29,7 +29,8 @@ Ext.define('Bling.Application', {
         'wms.OutwardProcessingGrid',
         'wms.OutwardProcessingEditor',
         'wms.PriceAdjustmentGrid',
-        'wms.PriceAdjustmentEditor'
+        'wms.PriceAdjustmentEditor',
+        'sys.ScheduleGrid'
     ],
 
     stores: [
@@ -39,6 +40,7 @@ Ext.define('Bling.Application', {
         'wms.RegionalAllocations',
         'wms.DistributionAllocations',
         'wms.OutwardProcessings',
-        'wms.PriceAdjustments'
+        'wms.PriceAdjustments',
+        'sys.Schedules'
     ]
 });

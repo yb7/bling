@@ -57,6 +57,47 @@ class PriceAdjustmentHeadDto(_order: PriceAdjustment) {
     val bizCode = order.bizCode
     val remark = order.remark
     val effectiveDate = order.effectiveDate
+    val retailPriceDirectly = order.retailPriceDirectly
+
+    val incrementBaseOnCost = order.incrementBaseOnCost
+    val coefficientBaseOnCost = order.coefficientBaseOnCost
+
+    val incrementBaseOnRetailPrice = order.incrementBaseOnRetailPrice
+    val coefficientBaseOnRetailPrice = order.coefficientBaseOnRetailPrice
+
+    val excludeUnits0 = order.excludeUnits0
+    val excludeUnits1 = order.excludeUnits1
+    val excludeUnits2 = order.excludeUnits2
+    val excludeUnits3 = order.excludeUnits3
+    val excludeUnits4 = order.excludeUnits4
+    val excludeUnits5 = order.excludeUnits5
+    val excludeUnits6 = order.excludeUnits6
+    val excludeUnits7 = order.excludeUnits7
+    val excludeUnits8 = order.excludeUnits8
+    val excludeUnits9 = order.excludeUnits9
+    val excludeUnits = {
+        var units = List.empty[Int]
+        if (excludeUnits0) units :+= 0
+        if (excludeUnits1) units :+= 1
+        if (excludeUnits2) units :+= 2
+        if (excludeUnits3) units :+= 3
+        if (excludeUnits4) units :+= 4
+        if (excludeUnits5) units :+= 5
+        if (excludeUnits6) units :+= 6
+        if (excludeUnits7) units :+= 7
+        if (excludeUnits8) units :+= 8
+        if (excludeUnits9) units :+= 9
+        units.mkString(",")
+    }
 }
 
-case class PriceAdjustmentExecuteDto(effectiveDate: LocalDate, receiveWarehouseId: Long, remark: String)
+case class PriceAdjustmentExecuteDto(
+        effectiveDate: LocalDate, remark: String,
+        retailPriceDirectly: BigDecimal,
+        incrementBaseOnCost: BigDecimal, coefficientBaseOnCost: BigDecimal,
+        incrementBaseOnRetailPrice: BigDecimal, coefficientBaseOnRetailPrice: BigDecimal,
+        excludeUnits0: Boolean, excludeUnits1: Boolean,excludeUnits2: Boolean,
+        excludeUnits3: Boolean, excludeUnits4: Boolean,excludeUnits5: Boolean,
+        excludeUnits6: Boolean, excludeUnits7: Boolean,excludeUnits8: Boolean,
+        excludeUnits9: Boolean
+)

@@ -50,6 +50,10 @@ GET           /eis/wms/price-adjustments/:id/articles        @controllers.eis.wm
 DELETE        /eis/wms/price-adjustments/:orderId/articles/:articleIds        @controllers.eis.wms.PriceAdjustmentController.deleteArticle(orderId: Long, articleIds: String)
 PUT           /eis/wms/price-adjustments/:id/execute        @controllers.eis.wms.PriceAdjustmentController.execute(id: Long)
 
+GET           /eis/sys/job/triggers        @controllers.eis.foundation.JobTriggerController.query()
+DELETE        /eis/sys/job/triggers/:triggerKey        @controllers.eis.foundation.JobTriggerController.delete(triggerKey)
+PUT           /eis/sys/job/triggers/:triggerKey/execute        @controllers.eis.foundation.JobTriggerController.triggerJob(triggerKey)
+
 
 GET           /eis/article/articles        @controllers.eis.article.ArticleController.query()
 

@@ -4,7 +4,8 @@ Ext.define('Bling.controller.Navigation', {
     views: ['foundation.CompanyMgmtGrid',
         'wms.ReceivingOrderMgmtGrid', 'wms.RegionalAllocationGrid',
         'wms.WarehouseMgmtGrid', 'wms.DistributionAllocationGrid',
-        'wms.OutwardProcessingGrid', 'wms.PriceAdjustmentGrid'],
+        'wms.OutwardProcessingGrid', 'wms.PriceAdjustmentGrid',
+        'sys.ScheduleGrid'],
 
     refs: [
         {
@@ -30,27 +31,10 @@ Ext.define('Bling.controller.Navigation', {
     },
 
     onNavSelectionChange: function(view, record, item, index, e, eOpts) {
-//        var record = records[0];
-//            text = record.get('text'),
         var xtype = record.get('id');
-//            alias = 'widget.' + xtype,
-//            contentPanel = this.getContentPanel(),
-//            cmp;
 
         if (xtype) { // only leaf nodes have ids
             this.application.fireEvent('addtocontentpanel', xtype);
-//            contentPanel.removeAll(true);
-//
-//            var className = Ext.ClassManager.getNameByAlias(alias);
-//            var ViewClass = Ext.ClassManager.get(className);
-//
-//            cmp = new ViewClass();
-//            contentPanel.add(cmp);
-//
-////            contentPanel.setTitle(text);
-//
-//            document.title = document.title.split(' - ')[0] + ' - ' + text;
-//            location.hash = xtype;
         }
     }
 });

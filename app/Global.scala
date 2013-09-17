@@ -1,8 +1,9 @@
 
+import config.AppServiceConfig
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.ApplicationContext
 import play.api._
-import util.AppServiceConfig
+import util.db.DbInitializer
 
 /**
  * Author: Wang Yibin
@@ -16,6 +17,11 @@ object Global extends GlobalSettings {
 
     override def onStart(app: Application) {
         super.onStart(app)
+        Logger.info("init tables started")
+        val dbInit = new DbInitializer
+        dbInit.init()
+        Logger.info("init tables finished")
+
         Logger.info("Application has started")
 //        ctx = new ClassPathXmlApplicationContext("applicationContext.xml")
         ctx = new AnnotationConfigApplicationContext(classOf[AppServiceConfig])

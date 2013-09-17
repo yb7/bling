@@ -1,10 +1,11 @@
 Ext.define('Bling.view.wms.PriceAdjustmentEditor', {
     extend: 'Ext.panel.Panel',
     xtype: 'price-adjustment-editor',
-    requires: ['Bling.view.wms.TallyArticleGrid'],
+    requires: ['Bling.view.wms.TallyArticleGrid',
+        'Ext.form.FieldSet'],
 
     bodyPadding: 10,
-    title: '分销调拨维护',
+    title: '调价',
     closable:true,
 
     initComponent: function() {
@@ -21,16 +22,16 @@ Ext.define('Bling.view.wms.PriceAdjustmentEditor', {
                 hideEmptyLabel: false
             },
             items: [
-                { fieldLabel: '个位不能为', boxLabel: '0', name: 'excludeUnits0' },
-                { checked: true, boxLabel: '1', name: 'excludeUnits1', labelWidth: 20 },
-                { checked: true, boxLabel: '2', name: 'excludeUnits2', labelWidth: 20 },
-                { checked: true, boxLabel: '3', name: 'excludeUnits3', labelWidth: 20 },
-                { checked: true, boxLabel: '4', name: 'excludeUnits4', labelWidth: 20 },
-                { boxLabel: '5', name: 'excludeUnits5', labelWidth: 20 },
-                { checked: true, boxLabel: '6', name: 'excludeUnits6', labelWidth: 20 },
-                { checked: true, boxLabel: '7', name: 'excludeUnits7', labelWidth: 20 },
-                { boxLabel: '8', name: 'excludeUnits8', labelWidth: 20 },
-                { boxLabel: '9', name: 'excludeUnits9', labelWidth: 20 }
+                { fieldLabel: '个位不能为', boxLabel: '0', name: 'excludeUnits0', inputValue: true },
+                { checked: true, boxLabel: '1', name: 'excludeUnits1', labelWidth: 20, inputValue: true },
+                { checked: true, boxLabel: '2', name: 'excludeUnits2', labelWidth: 20, inputValue: true },
+                { checked: true, boxLabel: '3', name: 'excludeUnits3', labelWidth: 20, inputValue: true },
+                { checked: true, boxLabel: '4', name: 'excludeUnits4', labelWidth: 20, inputValue: true },
+                { boxLabel: '5', name: 'excludeUnits5', labelWidth: 20, inputValue: true },
+                { checked: true, boxLabel: '6', name: 'excludeUnits6', labelWidth: 20, inputValue: true },
+                { checked: true, boxLabel: '7', name: 'excludeUnits7', labelWidth: 20, inputValue: true },
+                { boxLabel: '8', name: 'excludeUnits8', labelWidth: 20, inputValue: true },
+                { boxLabel: '9', name: 'excludeUnits9', labelWidth: 20, inputValue: true }
             ]
         };
 
@@ -41,6 +42,12 @@ Ext.define('Bling.view.wms.PriceAdjustmentEditor', {
                 align: 'stretch'
             },
             items: [ {
+                xtype:'hidden',
+                name:'id'
+            }, {
+                xtype:'hidden',
+                name:'version'
+            }, {
                 xtype: 'container',
                 layout: 'hbox',
                 defaults:{
@@ -55,35 +62,51 @@ Ext.define('Bling.view.wms.PriceAdjustmentEditor', {
                     xtype:'datefield',
                     fieldLabel:'生效日期',
                     format:'Y-m-d',
-                    name:'distributionDate'
+                    name:'effectiveDate'
                 }]
             }, excludeUnits, {
-                xtype: 'fieldset',
-                title: '指定售价',
-                defaults:{
-                    margin:'5 5 5 5'
-                },
-                items: [{
-                    xtype: 'textfield',
-                    fieldLabel: '零售价',
-                    labelWidth: 110
-                }]
+                xtype: 'textarea',
+                name: 'remark',
+                fieldLabel: '备注'
             }, {
-                xtype: 'fieldset',
+                xtype: 'container',
                 layout: 'hbox',
-                title: '按成本调价=(总成本+增量)×批调指数',
-                fieldDefaults: {
-                    labelWidth: 110
-                },
-                defaults:{
-                    margin:'5 5 5 5'
-                },
                 items: [{
-                    xtype: 'textfield',
-                    fieldLabel: '增量'
+                    xtype: 'fieldset',
+                    title: '指定售价',
+                    defaults:{
+                        margin:'5 5 5 5'
+                    },
+                    items: [{
+                        xtype: 'numberfield',
+                        value: 0,
+                        minValue: 0,
+                        fieldLabel: '零售价',
+                        labelWidth: 50,
+                        name:'retailPriceDirectly'
+                    }],
+                    margins: {right:20}
                 }, {
-                    xtype: 'textfield',
-                    fieldLabel: '批调整指数'
+                    xtype: 'fieldset',
+                    layout: 'hbox',
+                    title: '按成本调价=(总成本+增量)×批调指数',
+                    defaults:{
+                        margin:'5 5 5 5'
+                    },
+                    items: [{
+                            xtype: 'numberfield',
+                            value: 0,
+                            minValue: 0,
+                            fieldLabel: '增量',
+                            labelWidth: 50,
+                            name:'incrementBaseOnCost'
+                        }, {
+                            xtype: 'numberfield',
+                            value: 0,
+                            fieldLabel: '批调整指数',
+                            labelWidth: 80,
+                            name:'coefficientBaseOnCost'
+                    }]
                 }]
             }, {
                 xtype: 'fieldset',
@@ -96,11 +119,16 @@ Ext.define('Bling.view.wms.PriceAdjustmentEditor', {
                     margin:'5 5 5 5'
                 },
                 items: [{
-                    xtype: 'textfield',
-                    fieldLabel: '调前零售价+增量'
+                    xtype: 'numberfield',
+                    value: 0,
+                    minValue: 0,
+                    fieldLabel: '调前零售价+增量',
+                    name:'incrementBaseOnRetailPrice'
                 }, {
-                    xtype: 'textfield',
-                    fieldLabel: '调前零售价×系数'
+                    xtype: 'numberfield',
+                    value: 0,
+                    fieldLabel: '调前零售价×系数',
+                    name:'coefficientBaseOnRetailPrice'
                 }]
             }]
         };
@@ -126,7 +154,7 @@ Ext.define('Bling.view.wms.PriceAdjustmentEditor', {
                         }, '-', {
                             xtype: 'button',
                             itemId: 'executeBtn',
-                            text: '执行调拨'
+                            text: '执行调价'
                         }
                     ]
                 }

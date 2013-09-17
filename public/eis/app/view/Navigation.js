@@ -26,6 +26,13 @@ Ext.define('Bling.view.Navigation', {
                     { id: 'company-mgmt-grid', text: '公司管理', leaf: true },
                     { id: 'warehouse-mgmt-grid', text: '仓库管理', leaf: true }
                 ]
+            },
+            {
+                text: '系统管理',
+                expanded: true,
+                children: [
+                    { id: 'schedule-grid', text: '计划任务', leaf: true }
+                ]
             }
         ]
     }

@@ -1,19 +1,15 @@
-package util
+package config
 
-import org.springframework.context.annotation.{Import, PropertySource, ImportResource, FilterType, ComponentScan, Configuration, Bean}
+import org.springframework.context.annotation.{Import, FilterType, ComponentScan, Configuration, Bean}
 import org.springframework.context.annotation.ComponentScan.Filter
 import org.hibernate.SessionFactory
-import org.springframework.orm.hibernate4.{LocalSessionFactoryBuilder, LocalSessionFactoryBean, HibernateTransactionManager}
-import org.springframework.transaction.support.TransactionTemplate
-import java.security.{AccessController, Security}
-import org.springframework.mail.javamail.{JavaMailSender, JavaMailSenderImpl}
+import org.springframework.orm.hibernate4.{LocalSessionFactoryBuilder, HibernateTransactionManager}
 import play.api.Play.current
 import org.hibernate.cfg.AvailableSettings._
 import com.wyb7.waffle.domain.entity.{ScalaBigDecimalUserType, UnderscoreNamingStrategy}
 import org.springframework.transaction.annotation.{TransactionManagementConfigurer, EnableTransactionManagement}
 import org.slf4j.LoggerFactory
 import org.springframework.transaction.PlatformTransactionManager
-import org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor
 
 /**
  * User: abin
@@ -26,13 +22,14 @@ import org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor
     basePackages = Array("controllers", "eis"),
     excludeFilters = Array(new Filter(`type` = FilterType.ANNOTATION, value = Array(classOf[Configuration])))
 )
+@Import(Array(classOf[QuartzServiceConfig]))
 class AppServiceConfig extends TransactionManagementConfigurer {
     val logger = LoggerFactory.getLogger(classOf[AppServiceConfig])
 
     @Bean
     def sessionFactory: SessionFactory = {
         logger.info("start to build session factory")
-        val builder = new LocalSessionFactoryBuilder(play.api.db.DB.getDataSource())
+        val builder = new LocalSessionFactoryBuilder(dataSource)
 
         builder.setProperty(DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect")
             .setProperty(HBM2DDL_AUTO, "update")
@@ -46,6 +43,9 @@ class AppServiceConfig extends TransactionManagementConfigurer {
     def transactionManager: PlatformTransactionManager = {
         new HibernateTransactionManager(sessionFactory)
     }
+
+    @Bean
+    def dataSource = play.api.db.DB.getDataSource()
 
     def annotationDrivenTransactionManager(): PlatformTransactionManager = transactionManager
 }

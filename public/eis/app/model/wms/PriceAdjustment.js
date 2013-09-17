@@ -5,12 +5,27 @@ Ext.define('Bling.model.wms.PriceAdjustment', {
         {name: 'id', type: 'int', useNull: true},
         {name: 'version', type: 'int'},
         {name: 'bizCode'},
-        {name: 'redOrBlue', type:'string'},
-        {name: 'outwardDate', type:'date'},
-        {name: 'expectedCompletionDate', type:'date'},
-        {name: 'receiveWarehouseId', type: 'int'},
-        {name: 'receiveWarehouseName', type: 'string'},
-        {name: 'remark', type: 'string'}
+        {name : 'remark', type: 'string'},
+        {name : 'effectiveDate', type: 'date'},
+        {name : 'retailPriceDirectly', type: 'float'},
+
+        {name : 'incrementBaseOnCost', type: 'float'},
+        {name : 'coefficientBaseOnCost', type: 'float'},
+
+        {name : 'incrementBaseOnRetailPrice', type: 'float'},
+        {name : 'coefficientBaseOnRetailPrice', type: 'float'},
+
+        {name : 'excludeUnits', type: 'string'},
+        {name : 'excludeUnits0', type: 'boolean'},
+        {name : 'excludeUnits1', type: 'boolean'},
+        {name : 'excludeUnits2', type: 'boolean'},
+        {name : 'excludeUnits3', type: 'boolean'},
+        {name : 'excludeUnits4', type: 'boolean'},
+        {name : 'excludeUnits5', type: 'boolean'},
+        {name : 'excludeUnits6', type: 'boolean'},
+        {name : 'excludeUnits7', type: 'boolean'},
+        {name : 'excludeUnits8', type: 'boolean'},
+        {name : 'excludeUnits9', type: 'boolean'}
     ],
     proxy: {
         type: 'rest',

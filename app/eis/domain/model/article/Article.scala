@@ -60,6 +60,8 @@ class Article extends IdVersionEntity {
     var procurementSettlementPrice1: BigDecimal = 0
     var procurementSettlementPrice2: BigDecimal = 0
     var procurementSettlementPrice3: BigDecimal = 0
+    def totalProcurementSettlement = procurementSettlementPrice1 + procurementSettlementPrice2 + procurementSettlementPrice3
+
     var retailPrice: BigDecimal = 0
 
     var settlementMode: String = _
