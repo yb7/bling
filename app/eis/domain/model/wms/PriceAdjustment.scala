@@ -58,4 +58,19 @@ class PriceAdjustment extends IdVersionEntity {
     var excludeUnits7: Boolean = false
     var excludeUnits8: Boolean = false
     var excludeUnits9: Boolean = false
+
+    def excludeUnits = {
+        var units = List.empty[Int]
+        if (excludeUnits0) units :+= 0
+        if (excludeUnits1) units :+= 1
+        if (excludeUnits2) units :+= 2
+        if (excludeUnits3) units :+= 3
+        if (excludeUnits4) units :+= 4
+        if (excludeUnits5) units :+= 5
+        if (excludeUnits6) units :+= 6
+        if (excludeUnits7) units :+= 7
+        if (excludeUnits8) units :+= 8
+        if (excludeUnits9) units :+= 9
+        units
+    }
 }

@@ -75,20 +75,7 @@ class PriceAdjustmentHeadDto(_order: PriceAdjustment) {
     val excludeUnits7 = order.excludeUnits7
     val excludeUnits8 = order.excludeUnits8
     val excludeUnits9 = order.excludeUnits9
-    val excludeUnits = {
-        var units = List.empty[Int]
-        if (excludeUnits0) units :+= 0
-        if (excludeUnits1) units :+= 1
-        if (excludeUnits2) units :+= 2
-        if (excludeUnits3) units :+= 3
-        if (excludeUnits4) units :+= 4
-        if (excludeUnits5) units :+= 5
-        if (excludeUnits6) units :+= 6
-        if (excludeUnits7) units :+= 7
-        if (excludeUnits8) units :+= 8
-        if (excludeUnits9) units :+= 9
-        units.mkString(",")
-    }
+    val excludeUnits = order.excludeUnits.mkString(",")
 }
 
 case class PriceAdjustmentExecuteDto(

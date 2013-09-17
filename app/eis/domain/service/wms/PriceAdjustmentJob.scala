@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import eis.domain.model.article.{ArticleRepository, Article}
 import org.slf4j.LoggerFactory
 import org.springframework.transaction.annotation.Transactional
+import java.math.MathContext
+import scala.math.BigDecimal.RoundingMode
 
 /**
  * User: abin
@@ -39,7 +41,7 @@ class PriceAdjustmentExecutorImpl extends PriceAdjustmentExecutor {
         val adjustment = priceAdjustmentRepository.findById(priceAdjustmentId).get
 
         val retailPriceTactics:(Article => BigDecimal) = {article =>
-            if (adjustment.retailPriceDirectly > 0) {
+            var newPrice = if (adjustment.retailPriceDirectly > 0) {
                 adjustment.retailPriceDirectly
             } else if (adjustment.incrementBaseOnCost > 0 || adjustment.coefficientBaseOnCost > 0) {
                 (article.totalProcurementSettlement + adjustment.incrementBaseOnCost) * (1 + adjustment.coefficientBaseOnCost)
@@ -48,6 +50,11 @@ class PriceAdjustmentExecutorImpl extends PriceAdjustmentExecutor {
             } else {
                 article.retailPrice * (1 + adjustment.coefficientBaseOnRetailPrice)
             }
+            def newPriceUnits: Int = (newPrice.setScale(0, RoundingMode.UP).toLong % 10).toInt
+            while(adjustment.excludeUnits.contains(newPriceUnits)) {
+                newPrice += 1
+            }
+            newPrice
         }
 
         adjustment.listArticles.foreach {article =>
