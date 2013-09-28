@@ -30,6 +30,10 @@ Ext.define('Bling.Application', {
         'wms.OutwardProcessingEditor',
         'wms.PriceAdjustmentGrid',
         'wms.PriceAdjustmentEditor',
+				'wms.SellOrderMgmtGrid',
+				'wms.PreOrderMgmtGrid',
+				'wms.CustomOrderMgmtGrid',
+				'wms.FixOrderMgmtGrid',
         'sys.ScheduleGrid'
     ],
 

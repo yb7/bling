@@ -8,6 +8,16 @@ Ext.define('Bling.view.Navigation', {
     root: {
         expanded: true,
         children: [
+						{
+							text:'销售',
+							expanded:true,
+							children: [
+								{id:'sell-order-mgmt-grid',text:'销售单维护',leaf:true},
+								{id:'pre-order-mgmt-grid',text:'预定单维护',leaf:true},
+								{id:'custom-order-mgmt-grid',text:'定制单维护',leaf:true},
+								{id:'fix-order-mgmt-grid',text:'维修单',leaf:true}
+							]
+						},
             {
                 text: '理配',
                 expanded: true,

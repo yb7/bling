@@ -5,6 +5,8 @@ Ext.define('Bling.controller.Navigation', {
         'wms.ReceivingOrderMgmtGrid', 'wms.RegionalAllocationGrid',
         'wms.WarehouseMgmtGrid', 'wms.DistributionAllocationGrid',
         'wms.OutwardProcessingGrid', 'wms.PriceAdjustmentGrid',
+				'wms.SellOrderMgmtGrid','wms.PreOrderMgmtGrid',
+				'wms.CustomOrderMgmtGrid','wms.FixOrderMgmtGrid',
         'sys.ScheduleGrid'],
 
     refs: [
