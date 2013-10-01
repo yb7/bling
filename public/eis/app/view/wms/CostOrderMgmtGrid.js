@@ -1,7 +1,7 @@
-Ext.define("Bling.view.wms.FixOrderMgmtGrid", {
+Ext.define("Bling.view.wms.CostOrderMgmtGrid", {
     extend: 'Ext.panel.Panel',
-    title: '维修单维护',
-    xtype: 'fix-order-mgmt-grid',
+    title: '损耗单维护',
+    xtype: 'cost-order-mgmt-grid',
     requires: [
         'Ext.toolbar.TextItem',
         'Ext.form.field.Checkbox',
@@ -20,7 +20,7 @@ Ext.define("Bling.view.wms.FixOrderMgmtGrid", {
             store: 'wms.ReceivingOrders',
             columns: [
                 {text: 'ID', dataIndex: 'id', hidden: true, width: 50},
-                {text: '维修单号', dataIndex: 'fixOrderCode', width: 150},
+                {text: '维修单号', dataIndex: 'costOrderCode', width: 150},
                 {text: '货品条码', dataIndex: 'goodsCode', width: 150},
                 {text: '货品名称', dataIndex: 'goodsName', width:150},
                 {text: '货品品种', dataIndex: 'goodsCategory', width:150},
