@@ -36,21 +36,46 @@ Ext.define("Bling.view.wms.CustomOrderMgmtGrid", {
                 type: 'vbox',
                 align: 'stretch'
             },
-            items: [{
+            items: [
+            {
                 xtype: 'form',
                 layout : 'column',
-                height:70,
                 defaults: {
-                    labelWidth : 70,
+                    margin:'5 5 5 5',
+                    labelWidth : 90,
                     labelAlign:'right',
-                    columnWidth:0.25
+                    columnWidth:0.33
                 },
-                items: [{
-                    xtype:'textfield',
-                    fieldLabel:'入库单号',
-                    name:'sellCode',
-                    labelWidth:70
-                }],
+                items: [
+
+                    {
+                        xtype:'warehouse-combo',
+                        fieldLabel:'门店名称',
+                        name:'sellStore'
+                    },
+                    {
+                        xtype:'datefield',
+                        format:'Y-m-d',
+                        fieldLabel:'起始日期',
+                        name:'startdate'
+                    },
+                    {
+                        xtype:'datefield',
+                        format:'Y-m-d',
+                        fieldLabel:"结束日期",
+                        name:'enddate'
+                    },
+                    {
+                        xtype:'textfield',
+                        fieldLabel:'定制单号',
+                        name:'customOrder'
+                    },
+                    {
+                        xtype:'textfield',
+                        fieldLabel:'客户联系方式',
+                        name:'guestTel'
+                    },
+                ],
                 buttons:[{
                     text: '查询',
                     itemId: 'searchSellBtn'

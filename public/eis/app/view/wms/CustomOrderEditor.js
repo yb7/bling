@@ -17,7 +17,56 @@ Ext.define('Bling.view.wms.CustomOrderEditor', {
                 type: 'vbox',
                 align: 'stretch'
             },
-            items: [{
+            items: [
+            {
+                xtype: 'form',
+                layout:'column',
+                defaults: {
+                    margin:'5 5 5 5',
+                    columnWidth: 0.33
+                },
+                fieldDefaults: {
+                    labelWidth:70,
+                    labelAlign:'left'
+                },
+                items: [
+                    {
+                        xtype: 'textfield',
+                        name: 'sellCode',
+                        disabled:true,
+                        fieldLabel: '预定单号'
+                    },
+                    {
+                        xtype:'form',
+                        layout:'column',
+                        columnWidth:0.66,
+                        defaults: {
+                            margin:'5 5 5 5',
+                            columnWidth:0.33
+                        },
+                        items: [
+                            {
+                                xtype: 'button',
+                                itemId: 'cancelButton',
+                                disabled: true,
+                                text: '作废'
+                            },
+                            {
+                                xtype: 'button',
+                                itemId: 'saveButton',
+                                disabled: true,
+                                text: '保存/打印'
+                            },
+                            {
+                                xtype: 'checkbox',
+                                itemId: 'printCb',
+                                boxLabel: '是否立即打印'
+                            },
+                        ]
+                    }
+                ]
+            },
+            {
                 xtype: 'form',
                 layout:'column',
                 defaults: {
@@ -38,24 +87,23 @@ Ext.define('Bling.view.wms.CustomOrderEditor', {
                         name:'version'
                     },
                     {
-                        xtype: 'textfield',
-                        name: 'sellCode',
-                        fieldLabel: '入库单号'
+                        xtype: 'hidden',
+                        name: 'customCode',
                     },
                     {
                         xtype: 'warehouse-combo',
                         name: 'sellStore',
-                        fieldLabel: '销售门店'
+                        fieldLabel: '门店名称'
                     },
                     {
                         xtype: 'warehouse-combo',
                         name: 'sellArea',
-                        fieldLabel: '销售区域'
+                        fieldLabel: '区域'
                     },
                     {
                         xtype: 'warehouse-combo',
                         name: 'sellBar',
-                        fieldLabel: '销售柜台'
+                        fieldLabel: '柜台'
                     },
                     {
                         xtype: 'warehouse-combo',
@@ -73,46 +121,62 @@ Ext.define('Bling.view.wms.CustomOrderEditor', {
                         fieldLabel: '班次'
                     },
                     {
-                        xtype: 'warehouse-combo',
-                        name: 'sellPlan',
-                        fieldLabel: '营销方案'
+                        xtype: 'textfield',
+                        name: 'customcolor',
+                        fieldLabel: '颜色'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'custompure',
+                        fieldLabel: '净度'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'customquality',
+                        fieldLabel: '石重'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'customgoldgrade',
+                        fieldLabel: '金料'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'customtotalquality',
+                        fieldLabel: '总重'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'customsize',
+                        fieldLabel: '指圈号'
                     },
                     {
                         xtype: 'datefield',
-                        name: 'sellDate',
+                        name: 'customDate',
                         format:'Y-m-d',
-                        fieldLabel: '销售日期'
+                        fieldLabel: '预定日期'
                     },
                     {
-                        xtype: 'textfield',
-                        name: 'orderCode',
-                        fieldLabel: '预定单号'
+                        xtype: 'datefield',
+                        name: 'expireDate',
+                        format:'Y-m-d',
+                        fieldLabel: '到期日期'
                     },
                     {
-                        xtype: 'textfield',
-                        name: 'goodsCode',
-                        fieldLabel: '条码扫描'
+                        xtype:'panel',
+                        height:24
+                    },
+                    {
+                        xtype: 'numberfield',
+                        name: 'totalAmount',
+                        fieldLabel: '总金额'
+                    },
+                    {
+                        xtype: 'numberfield',
+                        name: 'earnestAmount',
+                        fieldLabel: '定金'
                     }
                 ]
-            }, {
-                xtype: 'tally-article-grid',
-                flex: 1,
-                store: me.articleStore,
-                dockedItems: [{
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    ui:'footer',
-                    items: ['->', {
-                            xtype: 'button',
-                            itemId: 'deleteBtn',
-                            disabled: true,
-                            text: '删除'
-                        }, '-', {
-                            text: '执行入库',
-                            itemId: 'executeBtn'
-                        }
-                    ]
-                }]
             }]
         });
 

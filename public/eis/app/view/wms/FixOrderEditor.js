@@ -17,7 +17,56 @@ Ext.define('Bling.view.wms.FixOrderEditor', {
                 type: 'vbox',
                 align: 'stretch'
             },
-            items: [{
+            items: [
+            {
+                xtype: 'form',
+                layout:'column',
+                defaults: {
+                    margin:'5 5 5 5',
+                    columnWidth: 0.33
+                },
+                fieldDefaults: {
+                    labelWidth:70,
+                    labelAlign:'left'
+                },
+                items: [
+                    {
+                        xtype: 'textfield',
+                        name: 'sellCode',
+                        disabled:true,
+                        fieldLabel: '预定单号'
+                    },
+                    {
+                        xtype:'form',
+                        layout:'column',
+                        columnWidth:0.66,
+                        defaults: {
+                            margin:'5 5 5 5',
+                            columnWidth:0.33
+                        },
+                        items: [
+                            {
+                                xtype: 'button',
+                                itemId: 'cancelButton',
+                                disabled: true,
+                                text: '作废'
+                            },
+                            {
+                                xtype: 'button',
+                                itemId: 'saveButton',
+                                disabled: true,
+                                text: '保存/打印'
+                            },
+                            {
+                                xtype: 'checkbox',
+                                itemId: 'printCb',
+                                boxLabel: '是否立即打印'
+                            },
+                        ]
+                    }
+                ]
+            },
+            {
                 xtype: 'form',
                 layout:'column',
                 defaults: {
@@ -38,9 +87,9 @@ Ext.define('Bling.view.wms.FixOrderEditor', {
                         name:'version'
                     },
                     {
-                        xtype: 'textfield',
+                        xtype: 'hidden',
                         name: 'sellCode',
-                        fieldLabel: '入库单号'
+                        fieldLabel: '预定单号'
                     },
                     {
                         xtype: 'warehouse-combo',
@@ -50,12 +99,12 @@ Ext.define('Bling.view.wms.FixOrderEditor', {
                     {
                         xtype: 'warehouse-combo',
                         name: 'sellArea',
-                        fieldLabel: '销售区域'
+                        fieldLabel: '区域'
                     },
                     {
                         xtype: 'warehouse-combo',
                         name: 'sellBar',
-                        fieldLabel: '销售柜台'
+                        fieldLabel: '柜台'
                     },
                     {
                         xtype: 'warehouse-combo',
@@ -73,46 +122,85 @@ Ext.define('Bling.view.wms.FixOrderEditor', {
                         fieldLabel: '班次'
                     },
                     {
-                        xtype: 'warehouse-combo',
-                        name: 'sellPlan',
-                        fieldLabel: '营销方案'
+                        xtype: 'textfield',
+                        name: 'goodsCode',
+                        disabled:true,
+                        fieldLabel: '条码扫描',
+                        columnWidth:0.66
                     },
                     {
                         xtype: 'datefield',
-                        name: 'sellDate',
+                        name: 'fixDate',
                         format:'Y-m-d',
-                        fieldLabel: '销售日期'
+                        fieldLabel: '维修日期'
+                    },
+                    {
+                        xtype: 'datefield',
+                        name: 'doneDate',
+                        format:'Y-m-d',
+                        fieldLabel: '预计完成日期'
+                    },
+                    {
+                        xtype:'panel',
+                        height:24
                     },
                     {
                         xtype: 'textfield',
-                        name: 'orderCode',
-                        fieldLabel: '预定单号'
-                    },
-                    {
-                        xtype: 'textfield',
-                        name: 'goodsCode',
-                        fieldLabel: '条码扫描'
+                        name: 'fixPrice',
+                        disabled:true,
+                        fieldLabel: '金额'
                     }
                 ]
-            }, {
-                xtype: 'tally-article-grid',
-                flex: 1,
-                store: me.articleStore,
-                dockedItems: [{
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    ui:'footer',
-                    items: ['->', {
-                            xtype: 'button',
-                            itemId: 'deleteBtn',
-                            disabled: true,
-                            text: '删除'
-                        }, '-', {
-                            text: '执行入库',
-                            itemId: 'executeBtn'
-                        }
-                    ]
-                }]
+            },
+            {
+                xtype:'panel',
+                border:false,
+                height:10,
+                html:'<hr width="100%">'
+            },
+            {
+                xtype: 'form',
+                layout:'column',
+                defaults: {
+                    margin:'5 5 5 5',
+                    columnWidth: 0.33
+                },
+                fieldDefaults: {
+                    labelWidth:70,
+                    labelAlign:'right'
+                },
+                items: [
+                    {
+                        xtype: 'textfield',
+                        name: 'fixOrderColor',
+                        fieldLabel: '颜色'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'fixOrderPure',
+                        fieldLabel: '净度'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'fixOrderStoneQuality',
+                        fieldLabel: '石重'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'fixOrderGoldGrade',
+                        fieldLabel: '金料'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'fixOrderTotalQuality',
+                        fieldLabel: '总重'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'fixOrderFingerSize',
+                        fieldLabel: '指圈号'
+                    }
+                ]
             }]
         });
 

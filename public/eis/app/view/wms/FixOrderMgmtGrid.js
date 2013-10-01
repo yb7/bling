@@ -20,7 +20,7 @@ Ext.define("Bling.view.wms.FixOrderMgmtGrid", {
             store: 'wms.ReceivingOrders',
             columns: [
                 {text: 'ID', dataIndex: 'id', hidden: true, width: 50},
-                {text: '销售单号', dataIndex: 'sellCode', width: 150},
+                {text: '维修单号', dataIndex: 'fixOrderCode', width: 150},
                 {text: '货品条码', dataIndex: 'goodsCode', width: 150},
                 {text: '货品名称', dataIndex: 'goodsName', width:150},
                 {text: '货品品种', dataIndex: 'goodsCategory', width:150},
@@ -39,18 +39,46 @@ Ext.define("Bling.view.wms.FixOrderMgmtGrid", {
             items: [{
                 xtype: 'form',
                 layout : 'column',
-                height:70,
                 defaults: {
-                    labelWidth : 70,
-                    labelAlign:'right',
-                    columnWidth:0.25
+                    margin:'5 5 5 5',
+                    labelWidth : 90,
+                    labelAlign:'left',
+                    columnWidth:0.33
                 },
-                items: [{
-                    xtype:'textfield',
-                    fieldLabel:'入库单号',
-                    name:'sellCode',
-                    labelWidth:70
-                }],
+                items: [
+                    {
+                        xtype:'warehouse-combo',
+                        fieldLabel:'门店名称',
+                        name:'sellStore'
+                    },
+                    {
+                        xtype:'datefield',
+                        format:'Y-m-d',
+                        fieldLabel:'起始日期',
+                        name:'startdate'
+                    },
+                    {
+                        xtype:'datefield',
+                        format:'Y-m-d',
+                        fieldLabel:"结束日期",
+                        name:'enddate'
+                    },
+                    {
+                        xtype:'textfield',
+                        fieldLabel:'维修单号',
+                        name:'customOrder'
+                    },
+                    {
+                        xtype:'textfield',
+                        fieldLabel:'货品条码',
+                        name:'goodsCode'
+                    },
+                    {
+                        xtype:'textfield',
+                        fieldLabel:'客户联系方式',
+                        name:'guestTel'
+                    },
+                ],
                 buttons:[{
                     text: '查询',
                     itemId: 'searchSellBtn'
