@@ -35,6 +35,7 @@ Ext.define('Bling.Application', {
 				'wms.CustomOrderMgmtGrid',
 				'wms.FixOrderMgmtGrid',
 				'wms.CostOrderMgmtGrid',
+				'wms.CounterOrderMgmtGrid',
         'sys.ScheduleGrid'
     ],
 

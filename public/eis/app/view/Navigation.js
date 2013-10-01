@@ -16,7 +16,8 @@ Ext.define('Bling.view.Navigation', {
 								{id:'pre-order-mgmt-grid',text:'预定单维护',leaf:true},
 								{id:'custom-order-mgmt-grid',text:'定制单维护',leaf:true},
 								{id:'fix-order-mgmt-grid',text:'维修单',leaf:true},
-								{id:'cost-order-mgmt-grid',text:'损耗单',leaf:true}
+								{id:'cost-order-mgmt-grid',text:'损耗单',leaf:true},
+								{id:'counter-order-mgmt-grid',text:'上柜',leaf:true}
 							]
 						},
             {
