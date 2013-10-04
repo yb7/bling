@@ -31,6 +31,13 @@ Ext.define('Bling.view.Navigation', {
                     { id: 'price-adjustment-grid', text: '调价', leaf: true }
                 ]
             },
+						{
+                text:'会员',
+								expanded:true,
+								children: [
+								    {id:'member-mgmt-grid',text:'会员资料',leaf:true},
+								]
+						},
             {
                 text: '基础数据管理',
                 expanded: true,
