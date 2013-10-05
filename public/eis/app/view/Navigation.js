@@ -20,6 +20,11 @@ Ext.define('Bling.view.Navigation', {
 								{id:'counter-order-mgmt-grid',text:'上柜',leaf:true}
 							]
 						},
+						{
+							id:'cashier-mgmt-grid',
+							leaf:true,
+							text:'收银'
+						},
             {
                 text: '理配',
                 expanded: true,
